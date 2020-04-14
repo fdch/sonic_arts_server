@@ -1,0 +1,28 @@
+{
+  "name": "heroku-server",
+  "version": "1.0.0",
+  "description": "a heroku server for remote max msp performances",
+  "main": "max-socketIO-heroku-server.js",
+  "scripts": {
+    "start": "node max-socketIO-heroku-server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fdch/sonic_arts_server.git"
+  },
+  "keywords": [
+    "network",
+    "performance",
+    "maxmsp"
+  ],
+  "author": "fdch",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fdch/sonic_arts_server/issues"
+  },
+  "homepage": "https://github.com/fdch/sonic_arts_server#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  }
+}
