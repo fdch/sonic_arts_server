@@ -22,7 +22,9 @@
   },
   "homepage": "https://github.com/fdch/sonic_arts_server#readme",
   "dependencies": {
+    "bufferutil": "^4.0.1",
     "express": "^4.17.1",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.3.0",
+    "utf-8-validate": "^5.0.2"
   }
 }
