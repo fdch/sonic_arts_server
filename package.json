@@ -4,7 +4,8 @@
   "description": "a heroku server for remote max msp performances",
   "main": "max-socketIO-heroku-server.js",
   "scripts": {
-    "start": "node max-socketIO-heroku-server.js"
+    "start": "node max-socketIO-heroku-server.js",
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
