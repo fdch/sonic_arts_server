@@ -1,5 +1,5 @@
 {
-  "name": "heroku-server",
+  "name": "sonic-arts-server",
   "version": "1.0.0",
   "description": "a heroku server for remote max msp performances",
   "main": "max-socketIO-heroku-server.js",
@@ -27,5 +27,6 @@
     "express": "^4.17.1",
     "socket.io": "^2.3.0",
     "utf-8-validate": "^5.0.2"
-  }
+  },
+  "devDependencies": {}
 }
