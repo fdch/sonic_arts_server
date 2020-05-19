@@ -24,8 +24,8 @@ console.log(`begin listening on port: ${myport}`);
 const io      = require('socket.io').listen(server); 
 
 
-// // launch the server
-// server.listen(myport); // start listening for socket connections
+// launch the server
+server.listen(myport); // start listening for socket connections
 
 
 // io.on('connection', (socket) => {
