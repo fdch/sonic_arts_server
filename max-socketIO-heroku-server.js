@@ -1,6 +1,6 @@
 /*
-Node Server hosted on Heroku
-by Eric Sheffield, Nick Hwang, and Anthony T. Marasco (2020)
+    Node Server hosted on Heroku
+    by Eric Sheffield, Nick Hwang, and Anthony T. Marasco (2020)
 */
 
 const express = require('express'),
@@ -8,13 +8,11 @@ const express = require('express'),
     server = require('http').createServer(app),
     io = require('socket.io').listen(server); 
 
-
-
+const myport=(process.env.PORT || 80);
 // launch the server
-server.listen(process.env.PORT || 80); // start listening for socket connections
+server.listen(myport); // start listening for socket connections
 
-
-
+console.log(myport);
 
 io.on('connection', (socket) => {
     
@@ -29,9 +27,7 @@ io.on('connection', (socket) => {
     // let the other clients know about the new particpant
     socket.broadcast.emit('messageFromServer', "Someone else has joined!");
     
-
     // ---
-
 
     // --- client to client communications
 
@@ -44,5 +40,4 @@ io.on('connection', (socket) => {
     socket.on('dataToServer', (data) => {
         socket.broadcast.emit('dataFromServer', data);
     })
-
 });

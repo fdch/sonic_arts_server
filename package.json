@@ -5,7 +5,7 @@
   "main": "max-socketIO-heroku-server.js",
   "scripts": {
     "start": "node max-socketIO-heroku-server.js",
-    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "npm install && npm run build"
   },
   "repository": {
     "type": "git",
