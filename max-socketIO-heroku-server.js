@@ -3,16 +3,30 @@
     by Eric Sheffield, Nick Hwang, and Anthony T. Marasco (2020)
 */
 
-const express = require('express'),
-    app = express(),
-    server = require('http').createServer(app),
-    io = require('socket.io').listen(server); 
-
 const myport=(process.env.PORT || 80);
+
+console.log(`defined port at: ${myport}`);
+
+console.log("require 'express' package");
+
+const express = require('express');
+
+console.log("start app...");
+
+const app     = express();
+
+console.log("create server...");
+
+const server  = require('http').createServer(app);
+
+console.log(`begin listening on port: ${myport}`);
+
+const io      = require('socket.io').listen(server); 
+
+
 // launch the server
 server.listen(myport); // start listening for socket connections
 
-console.log(myport);
 
 io.on('connection', (socket) => {
     
