@@ -1,10 +1,10 @@
 {
-  "name": "sonic-arts-server",
+  "name": "sahs",
   "version": "1.0.0",
   "description": "a heroku server for remote max msp performances",
-  "main": "max-socketIO-heroku-server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node max-socketIO-heroku-server.js",
+    "start": "node index.js",
     "heroku-postbuild": "npm install && npm run build"
   },
   "repository": {
