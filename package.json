@@ -2,9 +2,9 @@
   "name": "sonic-arts-server",
   "version": "1.0.0",
   "description": "a heroku server for remote max msp performances",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node server.js",
     "heroku-postbuild": "npm install && npm run build"
   },
   "repository": {
