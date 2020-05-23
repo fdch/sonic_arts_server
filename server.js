@@ -1,54 +1,67 @@
-const myport=(process.env.PORT || 80);
-
-// console.log(`defined port at: ${myport}`);
-
-// console.log("require 'express' package");
-
 const express = require('express');
+const app = express();
+const path = require('path');
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+const PORT = process.env.PORT || 80;
 
-// console.log("start app...");
+// Routing
+app.use(express.static(path.join(__dirname, 'public')));
 
-const app     = express();
-
-// console.log("create server...");
-
-const server  = require('http').createServer(app);
-
-console.log(`begin listening on port: ${myport}`);
-
-const io      = require('socket.io').listen(server); 
-
-// console.log("launch the server");
-// launch the server
-server.listen(myport); // start listening for socket connections
-
-
-console.log("begin socket connection...");
-
-io.on('connection', (socket) => {
-    
-    // --- intial connection messages
-
-    // post new connection message to server console
-    console.log('A client has connected.');
-
-    // send a confirmation message to a new client when they have connected
-    socket.emit('messageFromServer', "Welcome from the server!"); 
-
-    // let the other clients know about the new particpant
-    socket.broadcast.emit('messageFromServer', "Someone else has joined!");
-    
-    // ---
-
-    // --- client to client communications
-
-    // chat messages
-    socket.on('chatToServer', (chat) => {
-        socket.broadcast.emit('chatFromServer', chat);
-    })
-
-    // data
-    socket.on('dataToServer', (data) => {
-        socket.broadcast.emit('dataFromServer', data);
-    })
+// serve the homepage
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
 });
+
+// "Listens" for client connections
+io.sockets.on('connection', function(socket) {
+  // print in server console the socket's id
+  console.log('New user connected: ' + socket.id);
+  // print the number of users
+  console.log('Users connected: ' + users);
+  // emits connection established event (from server back to client)
+  socket.emit('connectionEstabilished-max', {
+    id: socket.id
+  });
+  // broadcasts connection established event to all clients
+  socket.broadcast.emit('connectionEstabilishedGlobal', {
+    id: socket.id
+  });
+
+  socket.on('inc', function(data) {
+    socket.broadcast.emit('inc', data);
+    console.log("received increase event...");
+  });
+
+  socket.on('dec', function(data) {
+    socket.broadcast.emit('dec', data);
+    console.log("received increase event...");
+  });
+
+  socket.on('spawnCollectible', function(){
+    socket.broadcast.emit('spawnCollectible');
+    console.log("spawning new collectible");
+  });
+
+  socket.on('increaseTempo', function(data) {
+    socket.broadcast.emit('increaseTempo', data);
+    console.log("received tempo change: increase...");
+  });
+
+  socket.on('decreaseTempo', function(data) {
+    socket.broadcast.emit('decreaseTempo', data);
+    console.log("received tempo change: decrease...");
+  });
+
+
+
+  // remove user
+  socket.on('disconnect', function() {
+    users--;
+    console.log('A user disconnected - ' + socket.id);
+  });
+});
+
+
+
+http.listen(PORT, () => console.log(`Listening on ${ PORT }`))
