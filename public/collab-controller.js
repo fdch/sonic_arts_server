@@ -1,4 +1,4 @@
-
+const io = require('socket.io');
   // messages
   $(function() { // called when DOM is ready
 
