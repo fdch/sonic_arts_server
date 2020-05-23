@@ -4,7 +4,7 @@ const path = require('path');
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const PORT = process.env.PORT || 80;
-
+console.log(__dirname);
 // Routing
 app.use(express.static(path.join(__dirname, 'public')));
 
