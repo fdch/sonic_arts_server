@@ -3,7 +3,7 @@
   $(function() { // called when DOM is ready
 
     // establishes a socket.io connection
-    var socket = io.connect('https://sonic-arts-ensemble.herokuapp.com');
+    var socket = io.connect('https://sonic-arts-server.herokuapp.com');
 
     // interface functions
     $('#shootbutton1').click(function() {
