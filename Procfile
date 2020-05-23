@@ -1,1 +1,1 @@
-web: node max-socketIO-heroku-server.js
+web: node index.js

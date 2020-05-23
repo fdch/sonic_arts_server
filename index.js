@@ -1,16 +1,16 @@
 const myport=(process.env.PORT || 80);
 
-console.log(`defined port at: ${myport}`);
+// console.log(`defined port at: ${myport}`);
 
-console.log("require 'express' package");
+// console.log("require 'express' package");
 
 const express = require('express');
 
-console.log("start app...");
+// console.log("start app...");
 
 const app     = express();
 
-console.log("create server...");
+// console.log("create server...");
 
 const server  = require('http').createServer(app);
 
@@ -18,7 +18,7 @@ console.log(`begin listening on port: ${myport}`);
 
 const io      = require('socket.io').listen(server); 
 
-
+// console.log("launch the server");
 // launch the server
 server.listen(myport); // start listening for socket connections
 

@@ -4,7 +4,7 @@ const maxAPI = require('max-api'),
     // Instead of pointing to our localhost, 
     // we're going to point to the Heroku app address
     // socket = io.connect('127.0.0.1:80');
-    socket = io.connect('https://sonic-arts-server.herokuapp.com/');
+    socket = io.connect('https://sahs.herokuapp.com/');
 
 // Report connection status to Max outlet.
 socket.on('connect', () => {
