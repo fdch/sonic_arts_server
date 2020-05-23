@@ -12,12 +12,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
-
+var users=0;
 // "Listens" for client connections
 io.sockets.on('connection', function(socket) {
   // print in server console the socket's id
   console.log('New user connected: ' + socket.id);
   // print the number of users
+  users+=1;
   console.log('Users connected: ' + users);
   // emits connection established event (from server back to client)
   socket.emit('connectionEstabilished-max', {
