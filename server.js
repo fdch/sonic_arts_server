@@ -54,7 +54,20 @@ io.sockets.on('connection', function(socket) {
     console.log("received tempo change: decrease...");
   });
 
+  socket.on('chat', function(data) {
+    socket.broadcast.emit('chat', data);
+    console.log("received chat...");
+  });
 
+  socket.on('event', function(header) {
+    socket.broadcast.emit('event', header);
+    console.log('received event: ' + header);
+  });
+
+  socket.on('events', function(events) {
+    socket.broadcast.emit('events', events);
+    console.log('lists of events: ' + events);
+  })
 
   // remove user
   socket.on('disconnect', function() {
