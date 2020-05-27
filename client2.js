@@ -1,13 +1,13 @@
 const maxAPI = require('max-api'),
-    io = require('socket.io-client'),
-    socket = io.connect('https://sonic-arts-server.herokuapp.com/');
-// Report connection status to Max outlet.
+  io = require('socket.io-client'),
+  socket = io.connect('http://sonic-arts-server.herokuapp.com/');
+
 socket.on('connect', () => {
-    maxAPI.outlet("Connected to server.");
-    maxAPI.outlet("connected");
+  maxAPI.outlet("Connected to server");
+  maxAPI.outlet("connected");
 });
 
-// --- Incoming from patch, out to server
+// events
 
 maxAPI.addHandler('event', (header) => {
   socket.emit('event', header);
@@ -71,44 +71,6 @@ maxAPI.addHandler('clearUsers', () => {
 maxAPI.addHandler('setServerConsole', (val) =>{
   socket.emit('setConsoleDisplay', val);
 });
-
-
-
-// --- Incoming from server
-
-socket.on('connectionEstabilishedGlobal',function(data) {
-    console.log("connections established");
-    maxAPI.outlet(["connections",data]);
-})
-
-//// INCOMING FROM SERVER - WEB BROWSER CLIENT OUT TO MAX PATCH CLIENT
-
-socket.on('inc', function(data) {
-    maxAPI.outlet(["inc",data]);
-    console.log("received increase event...");
-});
-
-socket.on('dec', function(data) {
-    maxAPI.outlet(["dec",data]);
-    console.log("received increase event...");
-});
-
-socket.on('spawnCollectible', function(){
-    maxAPI.outlet('spawnCollectible');
-    console.log("spawning new collectible");
-});
-
-socket.on('increaseTempo', function(data) {
-    maxAPI.outlet(["increaseTempo", data]);
-    console.log("received tempo change: increase...");
-});
-
-socket.on('decreaseTempo', function(data) {
-    maxAPI.outlet(["decreaseTempo", data]);
-    console.log("received tempo change: decrease...");
-});
-
-//// INCOMING FROM SERVER - MAX CLIENT OUT TO MAX PATCH CLIENT
 
 socket.on('chat', function(data){
   console.log('chat message received');

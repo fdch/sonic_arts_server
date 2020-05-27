@@ -53,6 +53,10 @@ io.sockets.on('connection', function(socket) {
     console.log("received tempo change: decrease...");
   });
 
+  socket.on('chat', function(data) {
+    socket.broadcast.emit('chat', data);
+    console.log("received chat...");
+  });
 
 
   // remove user
