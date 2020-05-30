@@ -78,8 +78,8 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 205.0, 329.0, 103.0, 22.0 ],
-					"text" : "print debugger-#1"
+					"patching_rect" : [ 205.0, 329.0, 91.0, 22.0 ],
+					"text" : "print #1"
 				}
 
 			}

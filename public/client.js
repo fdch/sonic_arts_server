@@ -1,9 +1,20 @@
-const maxAPI = require('max-api'),
-    io = require('socket.io-client'),
-    socket = io.connect('https://sonic-arts-server.herokuapp.com/');
-// Report connection status to Max outlet.
+/*
+ * 
+ * A heroku server based on 
+ * https://github.com/rioter00/Collab-Hub
+ *
+ */
+
+
+const server = "https://sonic-arts-server.herokuapp.com";
+const maxAPI = require('max-api');
+const io     = require('socket.io-client');
+const socket = io.connect(server);
+
+
+
+
 socket.on('connect', () => {
-    maxAPI.outlet("Connected to server.");
     maxAPI.outlet("connected");
 });
 
@@ -14,6 +25,17 @@ maxAPI.addHandler('event', (header) => {
   console.log('event sent: ' + header);
   maxAPI.outlet(["event", header]);
 })
+
+maxAPI.addHandler('events', (head, ...vals) => {
+  console.log("events length: " + vals.length);
+  const newEvent = {
+    header: head,
+    values: vals
+  };
+  console.log(newEvent);
+  socket.emit('events', newEvent);
+  console.log('sending events: ' + head + " - " + vals);
+});
 
 maxAPI.addHandler('chat', (data) => {
   socket.emit('chat', data);
@@ -76,9 +98,14 @@ maxAPI.addHandler('setServerConsole', (val) =>{
 
 // --- Incoming from server
 
-socket.on('connectionEstabilishedGlobal',function(data) {
+
+socket.on('connectionEstabilished-max',function(data) {
+    maxAPI.outlet(["connectionsMax",data]);
     console.log("connections established");
-    maxAPI.outlet(["connections",data]);
+})
+socket.on('connectionEstabilishedGlobal',function(data) {
+    maxAPI.outlet(["connectionsGlobal",data]);
+    console.log("connections established");
 })
 
 //// INCOMING FROM SERVER - WEB BROWSER CLIENT OUT TO MAX PATCH CLIENT
@@ -135,11 +162,6 @@ socket.on('events', function(events) {
   console.log('lists of events: ' + events);
   maxAPI.outlet(["events", events]);
 })
-
-// socket.on('seconds', (data) => {
-//   console.log('seconds logged?');
-//   // maxAPI(outl)
-// })
 
 socket.on('control', function(head, vals) {
   console.log('control ' + head + " " + vals);

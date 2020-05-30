@@ -29,6 +29,8 @@ io.sockets.on('connection', function(socket) {
     id: socket.id
   });
 
+  socket.broadcast.emit('usersConnected',users);
+
   socket.on('inc', function(data) {
     socket.broadcast.emit('inc', data);
     console.log("received increase event...");
