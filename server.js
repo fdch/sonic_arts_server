@@ -12,24 +12,63 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
+
 var users=0;
+var connectedUsers=[];
+
+
+
+function addUsername(name) {
+  for(var i=0; i<connectedUsers.length; i++) {
+    for(key in connectedUsers[i]) {
+      if(connectedUsers[i][key].indexOf(id.socket)!=-1) {
+        connectedUsers[i].name=name;
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
+  }
+}
+
 // "Listens" for client connections
 io.sockets.on('connection', function(socket) {
-  // print in server console the socket's id
-  console.log('New user connected: ' + socket.id);
-  // print the number of users
+
   users+=1;
+
+  // print in server console the socket's id
+  // console.log('New user connected: ' + socket.id);
+  
+  connectedUsers.push({
+    id: socket.id,
+    name: "user-"+users,
+  })
+
+  // print and broadcast the number of users
   console.log('Users connected: ' + users);
+  socket.broadcast.emit('usersConnected',users);
+
   // emits connection established event (from server back to client)
   socket.emit('connectionEstabilished-max', {
     id: socket.id
   });
+
   // broadcasts connection established event to all clients
   socket.broadcast.emit('connectionEstabilishedGlobal', {
     id: socket.id
   });
 
-  socket.broadcast.emit('usersConnected',users);
+
+  socket.on('addUsername',function(data) {
+    if (addUsername(data)) {
+      socket.broadcast.emit('newUsername',data);
+      console.log(data + " joined.")
+    } else {
+      console.log("Could not add username: " + data)
+    }
+  });
+
 
   socket.on('inc', function(data) {
     socket.broadcast.emit('inc', data);

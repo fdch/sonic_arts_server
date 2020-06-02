@@ -1,0 +1,12 @@
+#N canvas 566 120 450 300 12;
+#X obj 18 94 ggee/shell;
+#X obj 18 217 print;
+#X obj 85 133 sel;
+#X obj 85 170 print done;
+#X msg 18 29 node client.js;
+#X obj 103 201 print error;
+#X connect 0 0 1 0;
+#X connect 0 1 2 0;
+#X connect 2 0 3 0;
+#X connect 2 1 5 0;
+#X connect 4 0 0 0;

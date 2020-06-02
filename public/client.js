@@ -4,15 +4,10 @@
  * https://github.com/rioter00/Collab-Hub
  *
  */
-
-
 const server = "https://sonic-arts-server.herokuapp.com";
 const maxAPI = require('max-api');
 const io     = require('socket.io-client');
 const socket = io.connect(server);
-
-
-
 
 socket.on('connect', () => {
     maxAPI.outlet("connected");
