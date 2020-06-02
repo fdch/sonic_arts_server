@@ -72,12 +72,12 @@ maxAPI.addHandler('getControl', (header) => {
 
 maxAPI.addHandler('addUsername', (name) => {
   socket.emit('addUsername', name);
-  console.log('addUsername called');
+  // console.log('addUsername called');
 });
 
 maxAPI.addHandler('getUsers', (dummy) => {
   socket.emit('getUsers', dummy);
-  console.log('getUsers called');
+  // console.log('getUsers called');
 });
 
 maxAPI.addHandler('clearUsers', () => {

@@ -37,9 +37,9 @@ function addUsername(socket, data) {
         continue;
       }
     }
-    // could not find user's socket id in list
-    console.log("Could not add username: " + data);
   }
+  // could not find user's socket id in list
+  console.log("Could not add username: " + data);
 }
 
 function removeUser(id) {
