@@ -29,13 +29,12 @@ function addUsername(socket, data) {
           // change name
           var old=connectedUsers[i].name;
           connectedUsers[i].name=data;
-          if(connectedUsers[i].name.localeCompare('user-'+i)) {
+
+          if(!old.localeCompare(data)) {
+            console.log(old+" changed name to: "+data);
+          } else {
             //  new name
             console.log(data + " joined.");
-
-          } else {
-            console.log(old+" changed name to: "+data);
-
           }
           // username is new
           socket.broadcast.emit('newUsername',data);
