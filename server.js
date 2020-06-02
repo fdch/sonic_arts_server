@@ -61,7 +61,7 @@ io.sockets.on('connection', function(socket) {
 
 
   socket.on('addUsername',function(data) {
-    if (addUsername(id.socket,data)) {
+    if (addUsername(socket.id,data)) {
       socket.broadcast.emit('newUsername',data);
       console.log(data + " joined.")
     } else {
