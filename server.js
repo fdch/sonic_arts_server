@@ -16,7 +16,39 @@ app.get('/', (req, res) => {
 var users=0;
 var connectedUsers=[];
 
+function addUsername(id, data) {
+  for(var i=0; i<connectedUsers.length; i++) {
+    for(key in connectedUsers[i]) {
+      if(connectedUsers[i][key].indexOf(socket.id)!=-1) {
+        // socket id is already stored
+        if (!connectedUsers[i].name.localeCompare(data)) {
+          // username already exists
+          console.log(data + " already joined.");
+          return;
+        } else {
+          // change name
+          var old=connectedUsers[i].name;
+          connectedUsers[i].name=data;
+          if(connectedUsers[i].name.localeCompare('user-'+i)) {
+            //  new name
+            console.log(data + " joined.");
 
+          } else {
+            console.log(old+" changed name to: "+data);
+
+          }
+          // username is new
+          socket.broadcast.emit('newUsername',data);
+          return;
+        }
+      } else {
+        continue;
+      }
+    }
+    // could not find user's socket id in list
+    console.log("Could not add username: " + data);
+  }
+}
 // "Listens" for client connections
 io.sockets.on('connection', function(socket) {
 
@@ -47,32 +79,7 @@ io.sockets.on('connection', function(socket) {
 
   socket.on('addUsername',function(data) {
 
-    for(var i=0; i<connectedUsers.length; i++) {
-      for(key in connectedUsers[i]) {
-        if(connectedUsers[i][key].indexOf(socket.id)!=-1) {
-          // socket id is already stored
-          if (!connectedUsers[i].name.localeCompare(data)) {
-            // username already exists
-            console.log(data + " already joined.");
-          } else {
-            // change name
-            var old=connectedUsers[i].name;
-            connectedUsers[i].name=data;
-            if(connectedUsers[i].name.localeCompare('user-'+i)) {
-              // new name
-              console.log(data + " joined.")
-            } else {
-              console.log(old+" changed name to: "+data);
-            }
-            // username is new
-            socket.broadcast.emit('newUsername',data);
-          }
-        } else {
-          // could not find user's socket id in list
-          console.log("Could not add username: " + data);
-        }
-      }
-    }
+    addUsername(socket.id,data);
 
   });
 
