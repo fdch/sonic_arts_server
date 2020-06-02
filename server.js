@@ -18,10 +18,10 @@ var connectedUsers=[];
 
 
 
-function addUsername(name) {
+function addUsername(id,name) {
   for(var i=0; i<connectedUsers.length; i++) {
     for(key in connectedUsers[i]) {
-      if(connectedUsers[i][key].indexOf(id.socket)!=-1) {
+      if(connectedUsers[i][key].indexOf(id)!=-1) {
         connectedUsers[i].name=name;
         return true;
       }
@@ -61,7 +61,7 @@ io.sockets.on('connection', function(socket) {
 
 
   socket.on('addUsername',function(data) {
-    if (addUsername(data)) {
+    if (addUsername(id.socket,data)) {
       socket.broadcast.emit('newUsername',data);
       console.log(data + " joined.")
     } else {
