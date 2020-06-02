@@ -77,6 +77,10 @@ io.sockets.on('connection', function(socket) {
     }
   });
 
+  socket.on('getUsers', function(data) {
+    socket.broadcast.emit('users',connectedUsers);
+  })
+
 
   socket.on('inc', function(data) {
     socket.broadcast.emit('inc', data);
