@@ -79,6 +79,7 @@ io.sockets.on('connection', function(socket) {
 
   socket.on('getUsers', function(data) {
     socket.broadcast.emit('users',connectedUsers);
+    console.log(connectedUsers);
   })
 
 

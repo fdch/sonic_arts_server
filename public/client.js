@@ -75,8 +75,8 @@ maxAPI.addHandler('addUsername', (name) => {
   console.log('addUsername called');
 });
 
-maxAPI.addHandler('getUsers', () => {
-  socket.emit('getUsers');
+maxAPI.addHandler('getUsers', (dummy) => {
+  socket.emit('getUsers', dummy);
   console.log('getUsers called');
 });
 
