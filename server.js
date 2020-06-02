@@ -22,11 +22,15 @@ function addUsername(id,name) {
   for(var i=0; i<connectedUsers.length; i++) {
     for(key in connectedUsers[i]) {
       if(connectedUsers[i][key].indexOf(id)!=-1) {
-        connectedUsers[i].name=name;
-        return true;
+        if (!connectedUsers[i].name.localeCompare(name)) {
+          return 1; // user already exists
+        } else {
+          connectedUsers[i].name=name;
+          return 0; // added username
+        }
       }
       else {
-        return false;
+        return -1; // could not find user's socket id in list
       }
     }
   }
@@ -61,11 +65,15 @@ io.sockets.on('connection', function(socket) {
 
 
   socket.on('addUsername',function(data) {
-    if (addUsername(socket.id,data)) {
+    var u=addUsername(socket.id,data);
+    if (u==-1) {
+      console.log("Could not add username: " + data)
+    } else if (u==1) {
+      console.log(data + " already joined.")
+    }
+    else {
       socket.broadcast.emit('newUsername',data);
       console.log(data + " joined.")
-    } else {
-      console.log("Could not add username: " + data)
     }
   });
 
