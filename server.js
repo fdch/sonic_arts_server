@@ -54,12 +54,13 @@ function removeUser(id) {
     for(key in connectedUsers[i]) 
       if(connectedUsers[i][key].indexOf(id)!=-1) {
         // found user
-        connectedUsers[i].splice(i,1);
+        connectedUsers.splice(i,1);
         console.log(id + " was removed from user list.");
         return;
       } 
   console.log("could not find user...");
 }
+
 
 
 // "Listens" for client connections
