@@ -27,17 +27,10 @@ function addUsername(socket, data) {
           console.log(data + " already joined.");
           return;
         } else {
-          // change name
-          connectedUsers[i].name=data;
-          var uid=i+1;
-          if(!old.localeCompare("user-"+uid)) {
-            console.log(old+" changed name to: "+data);
-          } else {
-            //  new name
-            console.log(data + " joined.");
-          }
           // username is new
+          connectedUsers[i].name=data;
           socket.broadcast.emit('newUsername',data);
+          console.log(old+" changed name to: "+data);
           return;
         }
       } else {
@@ -92,9 +85,7 @@ io.sockets.on('connection', function(socket) {
 
 
   socket.on('addUsername',function(data) {
-
     addUsername(socket,data);
-
   });
 
   // remove user
@@ -107,6 +98,12 @@ io.sockets.on('connection', function(socket) {
   socket.on('getUsers', function(data) {
     socket.broadcast.emit('users',connectedUsers);
     console.log(connectedUsers);
+  })
+
+  socket.on('clearUsers', function() {
+    connectedUsers=[];
+    socket.broadcast.emit('users',0);
+    console.log("Cleared all users.");
   })
 
 
