@@ -19,7 +19,7 @@ var connectedUsers=[];
 function addUsername(id, data) {
   for(var i=0; i<connectedUsers.length; i++) {
     for(key in connectedUsers[i]) {
-      if(connectedUsers[i][key].indexOf(socket.id)!=-1) {
+      if(connectedUsers[i][key].indexOf(id)!=-1) {
         // socket id is already stored
         if (!connectedUsers[i].name.localeCompare(data)) {
           // username already exists
