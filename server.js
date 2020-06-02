@@ -17,25 +17,6 @@ var users=0;
 var connectedUsers=[];
 
 
-
-function addUsername(id,name) {
-  for(var i=0; i<connectedUsers.length; i++) {
-    for(key in connectedUsers[i]) {
-      if(connectedUsers[i][key].indexOf(id)!=-1) {
-        if (!connectedUsers[i].name.localeCompare(name)) {
-          return 1; // user already exists
-        } else {
-          connectedUsers[i].name=name;
-          return 0; // added username
-        }
-      }
-      else {
-        return -1; // could not find user's socket id in list
-      }
-    }
-  }
-}
-
 // "Listens" for client connections
 io.sockets.on('connection', function(socket) {
 
@@ -65,16 +46,34 @@ io.sockets.on('connection', function(socket) {
 
 
   socket.on('addUsername',function(data) {
-    var u=addUsername(socket.id,data);
-    if (u==-1) {
-      console.log("Could not add username: " + data)
-    } else if (u==1) {
-      console.log(data + " already joined.")
+
+    for(var i=0; i<connectedUsers.length; i++) {
+      for(key in connectedUsers[i]) {
+        if(connectedUsers[i][key].indexOf(socket.id)!=-1) {
+          // socket id is already stored
+          if (!connectedUsers[i].name.localeCompare(data)) {
+            // username already exists
+            console.log(data + " already joined.");
+          } else {
+            // change name
+            var old=connectedUsers[i].name;
+            connectedUsers[i].name=data;
+            if(connectedUsers[i].name.localeCompare('user-'+i)) {
+              // new name
+              console.log(data + " joined.")
+            } else {
+              console.log(old+" changed name to: "+data);
+            }
+            // username is new
+            socket.broadcast.emit('newUsername',data);
+          }
+        } else {
+          // could not find user's socket id in list
+          console.log("Could not add username: " + data);
+        }
+      }
     }
-    else {
-      socket.broadcast.emit('newUsername',data);
-      console.log(data + " joined.")
-    }
+
   });
 
   socket.on('getUsers', function(data) {
