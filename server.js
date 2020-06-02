@@ -21,16 +21,16 @@ function addUsername(socket, data) {
     for(key in connectedUsers[i]) {
       if(connectedUsers[i][key].indexOf(socket.id)!=-1) {
         // socket id is already stored
-        if (!connectedUsers[i].name.localeCompare(data)) {
+        var old=connectedUsers[i].name;
+        if (!old.localeCompare(data)) {
           // username already exists
           console.log(data + " already joined.");
           return;
         } else {
           // change name
-          var old=connectedUsers[i].name;
           connectedUsers[i].name=data;
-
-          if(!old.localeCompare(data)) {
+          var uid=i+1;
+          if(!old.localeCompare("user-"+uid)) {
             console.log(old+" changed name to: "+data);
           } else {
             //  new name
@@ -48,6 +48,20 @@ function addUsername(socket, data) {
     console.log("Could not add username: " + data);
   }
 }
+
+function removeUser(id) {
+  for(var i=0; i<connectedUsers.length; i++) 
+    for(key in connectedUsers[i]) 
+      if(connectedUsers[i][key].indexOf(id)!=-1) {
+        // found user
+        connectedUsers[i].splice(i,1);
+        console.log(id + " was removed from user list.");
+        return;
+      } 
+  console.log("could not find user...");
+}
+
+
 // "Listens" for client connections
 io.sockets.on('connection', function(socket) {
 
@@ -82,6 +96,13 @@ io.sockets.on('connection', function(socket) {
 
   });
 
+  // remove user
+  socket.on('disconnect', function() {
+    users--;
+    removeUser(socket.id);
+    console.log('A user disconnected - ' + socket.id);
+  });
+  
   socket.on('getUsers', function(data) {
     socket.broadcast.emit('users',connectedUsers);
     console.log(connectedUsers);
@@ -128,11 +149,7 @@ io.sockets.on('connection', function(socket) {
     console.log('lists of events: ' + events);
   })
 
-  // remove user
-  socket.on('disconnect', function() {
-    users--;
-    console.log('A user disconnected - ' + socket.id);
-  });
+
 });
 
 
