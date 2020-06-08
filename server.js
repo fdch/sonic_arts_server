@@ -132,7 +132,6 @@ io.sockets.on('connection', function(socket) {
    *  
    */
   socket.on('name',function(x) {
-    var message;
     // check if user object has a 'name' property
     if ( usr[0].data.hasOwnProperty('name') ) {
       // get the users old name
@@ -141,17 +140,17 @@ io.sockets.on('connection', function(socket) {
       // check if the old name is different from the new name (x)
       if (old.localeCompare(x)) {
         usr[0].data.name = x;
-        message = old + " changed name to: " + x + ".";
+        var message = old + " changed name to: " + x + ".";
       } else {
         // no need to change the name
-        message = 0;
+        var message = 0;
       }
     } else {
       // push a name property to the object with value x
       usr[0].data.push({
         name: x
       });
-      message = "User '"+socket.id+"' now has a name. Welcome, "+x"!";
+      var message = "User '"+socket.id+"' now has a name. Welcome, "+x+"!";
     }
     // broadcast a name change if there was one
     if (message) {
