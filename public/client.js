@@ -85,11 +85,14 @@ maxAPI.addHandler('clearUsers', () => {
   console.log('clearUsers called');
 });
 
-maxAPI.addHandler('setServerConsole', (val) =>{
+maxAPI.addHandler('setServerConsole', (val) => {
   socket.emit('setConsoleDisplay', val);
 });
 
-
+maxAPI.addHandler('broadcast', (data) => {
+  // TODO: add username to broadcast if it exists
+  socket.broadcast.emit(val);
+});
 
 // --- Incoming from server
 
