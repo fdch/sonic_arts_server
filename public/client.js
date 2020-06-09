@@ -41,6 +41,9 @@ maxAPI.addHandler('control', (x) => {
   // update controls
   socket.emit('control', x);
 });
+maxAPI.addHandler('dump', () => {
+  socket.emit('dump');
+});
 maxAPI.addHandler('clear', () => {
   socket.emit('clear');
 });

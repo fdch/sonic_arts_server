@@ -126,8 +126,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 75.0, 275.0, 122.0, 35.0 ],
-									"text" : ";\rnode-set getUsers"
+									"patching_rect" : [ 75.0, 275.0, 88.0, 35.0 ],
+									"text" : ";\rnode-set users"
 								}
 
 							}
@@ -164,8 +164,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 48.354165136814117, 108.333332657814026, 57.0, 22.0 ],
-									"text" : "getUsers"
+									"patching_rect" : [ 48.354165136814117, 108.333332657814026, 97.0, 22.0 ],
+									"text" : "users"
 								}
 
 							}

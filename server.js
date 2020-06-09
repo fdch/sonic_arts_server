@@ -239,6 +239,18 @@ io.sockets.on('connection', function(socket) {
   });
   /*
    *
+   *  'dump' message : gets all server-side data
+   *
+   */
+  socket.on('dump', function() {
+    // wipes out the server-side storage of user data
+    var u = usr[0].data.name?usr[0].data.name:usr[0].id;
+    var m = 'All user data dumped to ' + u;
+    broadcast(socket,'users',m);
+    socket.emit('dump',userData);
+  });
+  /*
+   *
    *  'clear' message : removes all server-side data
    *
    */
