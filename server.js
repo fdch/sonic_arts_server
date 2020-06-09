@@ -32,8 +32,7 @@ function getObjectReference(arr, key, val) {
    */
   var i=0;
   for (entry in arr) {
-    var k=entry.key;
-    if (!k.localeCompare(val))
+    if (!entry[key].localeCompare(val))
       // get the entry that matches our id
       return [entry,i];
     i++;
@@ -77,7 +76,7 @@ function updateDict(socket,userData,prop,header,values) {
         prop:[]
       });
     }
-    userData.prop.push(newStuff);
+    userData[prop].push(newStuff);
 }
 /*
  *
@@ -214,25 +213,25 @@ io.sockets.on('connection', function(socket) {
    *  see updateDict() routine.
    *
    */
-  socket.on('chat', function(data) {
+  socket.on('chat', function(x) {
     var   usrData = usr[0].data,
           prop = 'chat',
           header = ( usr[0].data.name || usr.id ) +"_chats",
-          values = data
+          values = x
     updateDict(socket, usrData, prop, header, values);
   });
-  socket.on('event', function(data) {
+  socket.on('event', function(x) {
     var   usrData = usr[0].data,
           prop = 'event',
-          header = data[0],
-          values = data.slice(1)
+          header = x[0],
+          values = x.slice(1)
     updateDict(socket, usrData, prop, header, values);
   });
-  socket.on('control', function(data) {
+  socket.on('control', function(x) {
     var   usrData = usr[0].data,
           prop = 'control',
-          header = data[0],
-          values = data.slice(1)
+          header = x[0],
+          values = x.slice(1)
     updateDict(socket, usrData, prop, header, values);
   });
   /*
@@ -242,7 +241,7 @@ io.sockets.on('connection', function(socket) {
    */
   socket.on('clear', function() {
     // wipes out the server-side storage of user data
-    var m = 'All user data cleared by ' + usr[0].data.name || usr[0].id;
+    var m = 'All user data cleared by ' + ( usr[0].data.name || usr[0].id );
     broadcast(socket,'users',m);
     userData=[];
   });
