@@ -32,7 +32,8 @@ function getObjectReference(arr, key, val) {
    */
   var i=0;
   for (entry in arr) {
-    if (!entry.key.localeCompare(val))
+    var k=entry.key;
+    if (!k.localeCompare(val))
       // get the entry that matches our id
       return [entry,i];
     i++;
