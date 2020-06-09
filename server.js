@@ -223,18 +223,18 @@ io.sockets.on('connection', function(socket) {
           values = x
     updateDict(socket, usrData, prop, header, values);
   });
-  socket.on('event', function(x) {
+  socket.on('event', function(head,...rest) {
     var   usrData = usr[0].data,
           prop = 'event',
-          header = arguments[0],
-          values = arguments.slice(1)
+          header = head,
+          values = rest
     updateDict(socket, usrData, prop, header, values);
   });
-  socket.on('control', function(x) {
+  socket.on('control', function(head,...rest) {
     var   usrData = usr[0].data,
           prop = 'control',
-          header = arguments[0],
-          values = arguments.slice(1)
+          header = head,
+          values = rest
     updateDict(socket, usrData, prop, header, values);
   });
   /*

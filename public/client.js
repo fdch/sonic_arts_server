@@ -75,10 +75,10 @@ maxAPI.addHandler('clear', () => {
  */
 
 socket.on('users', function(data) {
-  maxAPI.outlet(["users", data]);
+  maxAPI.outlet(data);
 });
 socket.on('console', function(data) {
-  maxAPI.outlet(["console", data]);
+  maxAPI.outlet(data);
 });
 socket.on('chat', function(data) {
   maxAPI.outlet(data);
