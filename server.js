@@ -23,11 +23,13 @@ app.get('/', (req, res) => {
  * 
  */
 function getObjectReference(arr, key, val) {
-  /* returns an array of two elements with 
+  /* 
+   * returns an array of two elements with 
    *  - the reference to an entry inside the array of objects 'arr'
    *  - the index to the array (arr) of objects
    * where 'key' matches with value 'val'
-  */
+   * 
+   */
   var i=0;
   for (entry in arr) {
     if (!entry.key.localeCompare(val))
@@ -37,7 +39,8 @@ function getObjectReference(arr, key, val) {
   }
 }
 function getUserList(userData) {
-  /* returns a string with all usernames or user id 
+  /* 
+   * returns a string with all usernames or user id 
    * that exist within userData (the input array)
    * 
    * NOTE:
@@ -46,7 +49,8 @@ function getUserList(userData) {
    *    user.data
    * 
    * if user.data.name does not exist, the user.id is appended instead
-  */
+   * 
+   */
   var userlist=[];
   for (user in userData) {
     userlist.push(user.data.name || user.id);
@@ -56,11 +60,6 @@ function getUserList(userData) {
 function broadcast(socket,head,data) {
   socket.broadcast.emit(head,data);
   console.log(head+": "+data);
-}
-function updateDictionary(socket,user,data) {
-  if (user.data.hasOwnProperty('chat')) {
-      socket.emit('chat',user.data.chat);
-  }
 }
 function updateDict(socket,userData,prop,header,values) {
     const newStuff = {
@@ -120,9 +119,9 @@ io.sockets.on('connection', function(socket) {
    *  
    */
   socket.on('disconnect', function() {
-    var message = (usr[0].data.name || usr[0].id) + " disconnected.";
+    var m = (usr[0].data.name || usr[0].id) + " disconnected.";
     userData.splice(usr[1],1);
-    broadcast(socket, 'console', message);
+    broadcast(socket, 'console', m);
     broadcast(socket, 'users', userData.length);
   });
   /*
@@ -132,6 +131,7 @@ io.sockets.on('connection', function(socket) {
    *  
    */
   socket.on('name',function(x) {
+    var m;
     // check if user object has a 'name' property
     if ( usr[0].data.hasOwnProperty('name') ) {
       // get the users old name
@@ -140,73 +140,71 @@ io.sockets.on('connection', function(socket) {
       // check if the old name is different from the new name (x)
       if (old.localeCompare(x)) {
         usr[0].data.name = x;
-        var message = old + " changed name to: " + x + ".";
+        m = old + " changed name to: " + x + ".";
       } else {
         // no need to change the name
-        var message = 0;
+        m = 0;
       }
     } else {
       // push a name property to the object with value x
       usr[0].data.push({
         name: x
       });
-      var message = "User '"+socket.id+"' now has a name. Welcome, "+x+"!";
+      m = "User '"+socket.id+"' now has a name. Welcome, "+x+"!";
     }
     // broadcast a name change if there was one
-    if (message) {
-      broadcast(socket,'console',message);
+    if (m) {
+      broadcast(socket,'console',m);
       broadcast(socket,'users',getUserList(userData));
     }
   });
   /*
    *
-   *  'get' messages:
-   *  - 'getUsers' returns a list of all users
-   *  - 'getChats' returns a list of all chats of the:
+   *  get-type ms:
+   *  - 'users' returns a list of all users
+   *  - 'chats' returns a list of all chats of the:
    *   -- no arguments: current user 
    *   -- 'user1': the specified user
    *   -- 'all': all the chats that have ever occured
    *
    */
-  socket.on('getUsers', function(data) {
+  socket.on('users', function() {
     // emits a list of user names or ids to the caller
     socket.emit('users',getUserList(userData));
   })
-  socket.on('getChats', function() {
-    var message;
-    if (!arguments.length) {
-      if (usr[0].data.hasOwnProperty('chat')) {
-        message = usr[0].data.chat;
-      } else {
-        message = "You have not chatted.";
-      }
-    } else {
-      var x = arguments[1];
-      switch (x) {
-        case "all":
-          for (user in userData) {
-            if (user.data.hasOwnProperty('chat')) {
-              message.push(user.data.chat);
-            }
+  socket.on('chats', function() {
+    var m, x = arguments[1];
+    switch (x) {
+      case undefined:
+        if (usr[0].data.hasOwnProperty('chat')) {
+          m = usr[0].data.chat;
+        } else {
+          m = "You have not chatted.";
+        }
+        break;
+      case "all":
+        for (user in userData) {
+          if (user.data.hasOwnProperty('chat')) {
+            m.push(user.data.chat);
           }
-          if (!message) message = "Noone said a word.";
-          break;
-        default:      
-          for (user in userData) {
-            if (!user.data.name.localeCompare(x) && 
-                  user.data.hasOwnProperty('chat')) {
-              message=user.data.chat;
-            }
+        }
+        if (!m) m = "Noone said a word.";
+        break;
+      default:      
+        for (user in userData) {
+          if (!user.data.name.localeCompare(x) && 
+                user.data.hasOwnProperty('chat')) {
+            m=user.data.chat;
           }
-          if (!message) message = x + " has not been very talkative...";
-      }
-      socket.emit('chat', message);
+        }
+        if (!m) m = x + " has not been very talkative...";
     }
+    socket.emit('chat', m);
   });
   /*
    *
-   *  'chat', 'event', and 'control' messages:
-   *  - broadcast messages to all clients with this structure
+   *  'chat', 'event', and 'control' ms:
+   *  - broadcast ms to all clients with this structure
    *    - head (string)
    *    - value (array of values)
    *    - time (msec since Jan 1,1970)
@@ -216,25 +214,25 @@ io.sockets.on('connection', function(socket) {
    *
    */
   socket.on('chat', function(data) {
-    var   userData = usr[0].data,
+    var   usrData = usr[0].data,
           prop = 'chat',
           header = ( usr[0].data.name || usr.id ) +"_chats",
           values = data
-    updateDict(socket, userData, prop, header, values);
+    updateDict(socket, usrData, prop, header, values);
   });
   socket.on('event', function(data) {
-    var   userData = usr[0].data,
+    var   usrData = usr[0].data,
           prop = 'event',
           header = data[0],
           values = data.slice(1)
-    updateDict(socket, userData, prop, header, values);
+    updateDict(socket, usrData, prop, header, values);
   });
   socket.on('control', function(data) {
-    var   userData = usr[0].data,
+    var   usrData = usr[0].data,
           prop = 'control',
           header = data[0],
           values = data.slice(1)
-    updateDict(socket, userData, prop, header, values);
+    updateDict(socket, usrData, prop, header, values);
   });
   /*
    *
@@ -243,8 +241,8 @@ io.sockets.on('connection', function(socket) {
    */
   socket.on('clear', function() {
     // wipes out the server-side storage of user data
-    var message = 'All user data cleared by ' + usr[0].data.name || usr[0].id;
-    broadcast(socket,'users',message);
+    var m = 'All user data cleared by ' + usr[0].data.name || usr[0].id;
+    broadcast(socket,'users',m);
     userData=[];
   });
 });
