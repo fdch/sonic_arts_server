@@ -73,11 +73,8 @@ function updateDict(socket,userData,prop,header,values) {
     broadcast(socket, prop, newStuff);
 
     // if there is none, push a prop property to the object
-    if (!userData.hasOwnProperty(prop)) {
-      userData.push({
-        prop:[]
-      });
-    }
+    if (!userData.hasOwnProperty(prop)) userData.prop = [];
+
     userData[prop].push(newStuff);
 }
 /*
