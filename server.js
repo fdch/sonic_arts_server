@@ -154,10 +154,8 @@ io.sockets.on('connection', function(socket) {
         m = 0;
       }
     } else {
-      // push a name property to the object with value x
-      usr[0].data.push({
-        name: x
-      });
+      // add a name property to the object with value x
+      usr[0].data.name = x;
       m = "User '"+socket.id+"' now has a name. Welcome, "+x+"!";
     }
     // broadcast a name change if there was one
