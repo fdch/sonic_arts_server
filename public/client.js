@@ -81,15 +81,17 @@ socket.on('console', function(data) {
   maxAPI.outlet(["console", data]);
 });
 socket.on('chat', function(data) {
-  maxAPI.outlet(["chat", data]);
+  maxAPI.outlet(data);
 });
 socket.on('event', function(data) {
-  maxAPI.outlet(["event", data]);
+  maxAPI.outlet(data);
 });
 socket.on('control', function(data) {
-  maxAPI.outlet(["control", data]);
+  maxAPI.outlet(data);
 });
-
+socket.on('dump', function(data) {
+  maxAPI.outlet(data);
+});
 // socket.on('control', function(head, vals) {
 //   console.log('control ' + head + " " + vals);
 //   // use spread operator regardless if single or multiple datum.

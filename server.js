@@ -5,7 +5,7 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const PORT = process.env.PORT || 80;
 const date = new Date();
-
+var verbose = 0;
 // store everythin here for now:
 var userData=[];
 
@@ -60,8 +60,8 @@ function getUserList(arr) {
   return userlist.join(" ");
 }
 function broadcast(socket,head,data) {
-  socket.broadcast.emit(head,data);
-  console.log(head+": "+data);
+  socket.broadcast.emit(head,data); 
+  if (verbose) console.log(head+": "+data);
 }
 function updateDict(socket,userData,prop,header,values) {
     const newStuff = {
@@ -226,15 +226,15 @@ io.sockets.on('connection', function(socket) {
   socket.on('event', function(x) {
     var   usrData = usr[0].data,
           prop = 'event',
-          header = x[0],
-          values = x.slice(1)
+          header = arguments[0],
+          values = arguments.slice(1)
     updateDict(socket, usrData, prop, header, values);
   });
   socket.on('control', function(x) {
     var   usrData = usr[0].data,
           prop = 'control',
-          header = x[0],
-          values = x.slice(1)
+          header = arguments[0],
+          values = arguments.slice(1)
     updateDict(socket, usrData, prop, header, values);
   });
   /*
