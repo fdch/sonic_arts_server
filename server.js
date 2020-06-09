@@ -87,6 +87,7 @@ function updateDict(socket,userData,prop,header,values) {
  *
  */
 io.sockets.on('connection', function(socket) {
+  var sid = socket.id;
   /*
    *   
    *  Update the userData with the new socket id 
@@ -95,7 +96,7 @@ io.sockets.on('connection', function(socket) {
    *    
    */
   userData.push({ 
-    id: socket.id, 
+    id: sid, 
     data: {},  
     time: date.getTime()
   })
@@ -111,7 +112,7 @@ io.sockets.on('connection', function(socket) {
    * get user reference and index for later use
    *
    */
-  var usr = getObjectReference(userData,'id',socket.id);
+  var usr = getObjectReference(userData, 'id', sid);
   /*
    *
    * Handles user disconnecting
