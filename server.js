@@ -40,13 +40,13 @@ function getObjectReference(arr, key, val) {
     i++;
   }
 }
-function getUserList(userData) {
+function getUserList(arr) {
   /* 
    * returns a string with all usernames or user id 
    * that exist within userData (the input array)
    * 
    * NOTE:
-   * userData must be in the form
+   * arr must be in the form
    *    user.id
    *    user.data
    * 
@@ -54,8 +54,8 @@ function getUserList(userData) {
    * 
    */
   var userlist=[];
-  for (user in userData) {
-    userlist.push(user.data.name || user.id);
+  for (var i=0; i<arr.length; i++) {
+    userlist.push(arr[i].data.name || arr[i].id);
   }
   return userlist.join(" ");
 }
@@ -101,7 +101,6 @@ io.sockets.on('connection', function(socket) {
     data: [],  
     time: date.getTime()
   })
-  console.log(socket.id + " connected.");
   /*
    *
    * Report how many users are online
