@@ -8,10 +8,6 @@ const server = "https://sonic-arts-server.herokuapp.com";
 const maxAPI = require('max-api');
 const io     = require('socket.io-client');
 const socket = io.connect(server);
-
-socket.on('connect', () => {
-    maxAPI.outlet("connected");
-});
 /*
  *
  * From Max
@@ -47,33 +43,14 @@ maxAPI.addHandler('dump', () => {
 maxAPI.addHandler('clear', () => {
   socket.emit('clear');
 });
-// maxAPI.addHandler('event', (y, ...z) => {
-//   // add an event
-//   const x = {
-//     head: y,
-//     value: z 
-//   }
-//   socket.emit('event', x);
-// });
-
-// maxAPI.addHandler('control', (head, ...vals) => {
-//   console.log("val length: " + vals.length);
-//   const newControl = {
-//     header: head,
-//     values: vals
-//   };
-//   console.log(newControl);
-//   socket.emit('control', newControl);
-//   console.log('sending control: ' + head + " - " + vals);
-// });
-
-
+maxAPI.addHandler('verbose', (x) => {
+  socket.emit('verbose', x);
+});
 /*
  *
  * To Max
  *
  */
-
 socket.on('users', function(data) {
   maxAPI.outlet(data);
 });
@@ -92,14 +69,3 @@ socket.on('control', function(data) {
 socket.on('dump', function(data) {
   maxAPI.outlet(data);
 });
-// socket.on('control', function(head, vals) {
-//   console.log('control ' + head + " " + vals);
-//   // use spread operator regardless if single or multiple datum.
-//   // console.log('val length: ' + vals);
-//   if (vals == null || vals == 'undefined') {
-//     console.log('header undefined');
-//     maxAPI.outlet(["control", head, "noHeader"]);
-//   } else {
-//     maxAPI.outlet(["control", head, ...vals]);
-//   }
-// });

@@ -104,7 +104,6 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-19",
@@ -853,7 +852,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 621.0, 57.0, 422.0, 478.0 ],
+						"rect" : [ 375.0, 192.0, 422.0, 478.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -899,7 +898,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 256.0, 227.0, 57.0, 22.0 ],
-									"text" : "getUsers"
+									"text" : "users"
 								}
 
 							}
@@ -910,8 +909,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 232.0, 185.0, 111.0, 22.0 ],
-									"text" : "addUsername fede"
+									"patching_rect" : [ 232.0, 185.0, 65.0, 22.0 ],
+									"text" : "name fede"
 								}
 
 							}

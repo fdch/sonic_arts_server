@@ -260,6 +260,14 @@ io.sockets.on('connection', function(socket) {
     broadcast(socket,'users',m);
     userData=[];
   });
+  /*
+   *
+   *  'verbose' message : verbosity level for console posting
+   *
+   */
+  socket.on('verbose', function(x) {
+    verbose = x;
+  });
 });
 /*
  *
