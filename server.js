@@ -66,6 +66,8 @@ function updateDict(socket,userData,prop,header,values) {
       value: values,
       time: date.getTime()
     }
+    // broadcasts a prop to all clients
+    broadcast(socket, prop, newStuff);
 
     // if there is none, push a prop property to the object
     if (!userData.hasOwnProperty(prop)) {
@@ -73,10 +75,6 @@ function updateDict(socket,userData,prop,header,values) {
         prop:[]
       });
     }
-
-    // broadcasts a prop to all clients
-    broadcast(socket, prop, newStuff);
-
     userData.prop.push(newStuff);
 }
 /*
@@ -162,9 +160,10 @@ io.sockets.on('connection', function(socket) {
    *
    *  'get' messages:
    *  - 'getUsers' returns a list of all users
-   *  - 'getChats' returns a list of all chats of the current user
-   *  - 'getUserChats' returns a list of all chats of the specified user
-   *  - 'getAllChats' returns all the chats that have ever occured
+   *  - 'getChats' returns a list of all chats of the:
+   *   -- no arguments: current user 
+   *   -- 'user1': the specified user
+   *   -- 'all': all the chats that have ever occured
    *
    */
   socket.on('getUsers', function(data) {
@@ -172,34 +171,34 @@ io.sockets.on('connection', function(socket) {
     socket.emit('users',getUserList(userData));
   })
   socket.on('getChats', function() {
-    if (usr[0].data.hasOwnProperty('chat')) {
-      socket.emit('chat',usr[0].data.chat);
-    }
-  });
-  socket.on('getUserChats', function(who) {
     var message;
-    for (user in userData) {
-      if (!user.data.name.localeCompare(who) && 
-            user.data.hasOwnProperty('chat')) {
-        message=user.data.chat;
+    if (!arguments.length) {
+      if (usr[0].data.hasOwnProperty('chat')) {
+        message = usr[0].data.chat;
+      } else {
+        message = "You have not chatted.";
       }
-    }
-    if (message)  {
-      socket.emit('chat',message);  
     } else {
-      socket.emit('chat', who + " has not been very talkative...");
-    }
-  });
-  socket.on('getAllChats', function() {
-    var message;
-    for (user in userData)
-      if (user.data.hasOwnProperty('chat'))
-        message.push(user.data.chat);
-    
-    if (message) {
-      socket.emit('chat',message);
-    } else {
-      socket.emit('chat',"Noone said a word.");
+      var who = arguments[1];
+      switch (who) {
+        case: "all":
+          for (user in userData) {
+            if (user.data.hasOwnProperty('chat')) {
+              message.push(user.data.chat);
+            }
+          }
+          if (!message) message = "Noone said a word.";
+          break;
+        default:      
+          for (user in userData) {
+            if (!user.data.name.localeCompare(who) && 
+                  user.data.hasOwnProperty('chat')) {
+              message=user.data.chat;
+            }
+          }
+          if (!message) message = who + " has not been very talkative...";
+      }
+      socket.emit('chat', message);
     }
   });
   /*
