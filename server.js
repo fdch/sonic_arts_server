@@ -179,9 +179,9 @@ io.sockets.on('connection', function(socket) {
         message = "You have not chatted.";
       }
     } else {
-      var who = arguments[1];
-      switch (who) {
-        case: "all":
+      var x = arguments[1];
+      switch (x) {
+        case "all":
           for (user in userData) {
             if (user.data.hasOwnProperty('chat')) {
               message.push(user.data.chat);
@@ -191,12 +191,12 @@ io.sockets.on('connection', function(socket) {
           break;
         default:      
           for (user in userData) {
-            if (!user.data.name.localeCompare(who) && 
+            if (!user.data.name.localeCompare(x) && 
                   user.data.hasOwnProperty('chat')) {
               message=user.data.chat;
             }
           }
-          if (!message) message = who + " has not been very talkative...";
+          if (!message) message = x + " has not been very talkative...";
       }
       socket.emit('chat', message);
     }
