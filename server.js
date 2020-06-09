@@ -55,7 +55,7 @@ function getUserList(arr) {
    */
   var userlist=[];
   for (var i=0; i<arr.length; i++) {
-    userlist.push(arr[i].data.name || arr[i].id);
+    userlist.push(arr[i].data.name ? arr[i].data.name : arr[i].id)
   }
   return userlist.join(" ");
 }
@@ -122,7 +122,7 @@ io.sockets.on('connection', function(socket) {
    *  
    */
   socket.on('disconnect', function() {
-    var m = (usr[0].data.name || usr[0].id) + " disconnected.";
+    var m = (usr[0].data.name?usr[0].data.name:usr[0].id) + " disconnected.";
     userData.splice(usr[1],1);
     broadcast(socket, 'console', m);
     broadcast(socket, 'users', userData.length);
@@ -219,7 +219,7 @@ io.sockets.on('connection', function(socket) {
   socket.on('chat', function(x) {
     var   usrData = usr[0].data,
           prop = 'chat',
-          header = ( usr[0].data.name || usr.id ) +"_chats",
+          header = ( usr[0].data.name?usr[0].data.name:usr.id ) +"_chats",
           values = x
     updateDict(socket, usrData, prop, header, values);
   });
@@ -244,7 +244,8 @@ io.sockets.on('connection', function(socket) {
    */
   socket.on('clear', function() {
     // wipes out the server-side storage of user data
-    var m = 'All user data cleared by ' + ( usr[0].data.name || usr[0].id );
+    var u = usr[0].data.name?usr[0].data.name:usr[0].id;
+    var m = 'All user data cleared by ' + u;
     broadcast(socket,'users',m);
     userData=[];
   });
