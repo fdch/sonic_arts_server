@@ -32,9 +32,10 @@ function getObjectReference(arr, key, val) {
    */
   var i=0;
   for (entry in arr) {
-    if (!entry[key].localeCompare(val))
+    if (!entry[key].localeCompare(val)) {
       // get the entry that matches our id
       return [entry,i];
+    }
     i++;
   }
 }
@@ -98,6 +99,7 @@ io.sockets.on('connection', function(socket) {
     data: {},  
     time: date.getTime()
   })
+  console.log(socket.id + " connected.");
   /*
    *
    * Report how many users are online
