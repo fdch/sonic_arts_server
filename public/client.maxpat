@@ -104,6 +104,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-6",
@@ -138,8 +139,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 276.0, 200.0, 190.0, 35.0 ],
-									"text" : ";\rnode-set addUsername myname2"
+									"patching_rect" : [ 276.0, 200.0, 145.0, 35.0 ],
+									"text" : ";\rnode-set name myname2"
 								}
 
 							}
@@ -151,20 +152,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 62.0, 200.0, 190.0, 35.0 ],
-									"text" : ";\rnode-set addUsername myname1"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-147",
-									"maxclass" : "message",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 85.854165136814117, 141.333332657814026, 66.0, 22.0 ],
-									"text" : "clearUsers"
+									"patching_rect" : [ 62.0, 200.0, 145.0, 35.0 ],
+									"text" : ";\rnode-set name myname1"
 								}
 
 							}
@@ -175,7 +164,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 92.354165136814117, 108.333332657814026, 57.0, 22.0 ],
+									"patching_rect" : [ 48.354165136814117, 108.333332657814026, 57.0, 22.0 ],
 									"text" : "getUsers"
 								}
 
@@ -187,8 +176,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 48.354165136814117, 78.333332657814026, 101.0, 22.0 ],
-									"text" : "addUsername $1"
+									"patching_rect" : [ 48.354165136814117, 78.333332657814026, 55.0, 22.0 ],
+									"text" : "name $1"
 								}
 
 							}
@@ -201,17 +190,6 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 123.854165136814117, 54.333332657814026, 161.0, 20.0 ],
 									"text" : "Users"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-121",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 162.854165136814117, 141.333332657814026, 377.0, 20.0 ],
-									"text" : "clearUsers (use with caution, clears server's list of connected users)"
 								}
 
 							}
@@ -1857,6 +1835,8 @@
 									"saved_object_attributes" : 									{
 										"autostart" : 0,
 										"defer" : 0,
+										"node_bin_path" : "",
+										"npm_bin_path" : "",
 										"watch" : 0
 									}
 ,
@@ -1887,6 +1867,8 @@
 									"saved_object_attributes" : 									{
 										"autostart" : 0,
 										"defer" : 0,
+										"node_bin_path" : "",
+										"npm_bin_path" : "",
 										"watch" : 0
 									}
 ,

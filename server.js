@@ -98,7 +98,7 @@ io.sockets.on('connection', function(socket) {
    */
   userData.push({ 
     id: sid, 
-    data: {},  
+    data: [],  
     time: date.getTime()
   })
   console.log(socket.id + " connected.");
