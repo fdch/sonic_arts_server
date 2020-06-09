@@ -23,10 +23,11 @@ app.get('/', (req, res) => {
  * 
  */
 function getObjectReference(arr, key, val) {
-  // returns an array of two elements with 
-  //  - the reference to an entry inside the array of objects 'arr'
-  //  - the index to the array (arr) of objects
-  // where 'key' matches with value 'val'
+  /* returns an array of two elements with 
+   *  - the reference to an entry inside the array of objects 'arr'
+   *  - the index to the array (arr) of objects
+   * where 'key' matches with value 'val'
+  */
   var i=0;
   for (entry in arr) {
     if (!entry.key.localeCompare(val))
@@ -36,15 +37,16 @@ function getObjectReference(arr, key, val) {
   }
 }
 function getUserList(userData) {
-  // returns a string with all usernames or user id 
-  // that exist within userData (the input array)
-  // 
-  // NOTE:
-  // userData must be in the form
-  //    user.id
-  //    user.data
-  // 
-  // if user.data.name does not exist, the user.id is appended instead
+  /* returns a string with all usernames or user id 
+   * that exist within userData (the input array)
+   * 
+   * NOTE:
+   * userData must be in the form
+   *    user.id
+   *    user.data
+   * 
+   * if user.data.name does not exist, the user.id is appended instead
+  */
   var userlist=[];
   for (user in userData) {
     userlist.push(user.data.name || user.id);
