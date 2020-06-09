@@ -33,13 +33,13 @@ maxAPI.addHandler('chat', (x) => {
   // add a chat
   socket.emit('chat', x);
 });
-maxAPI.addHandler('event', (x) => {
+maxAPI.addHandler('event', (head,...rest) => {
   // add an event
-  socket.emit('event', x);
+  socket.emit('event', {header:head, values:rest});
 });
-maxAPI.addHandler('control', (x) => {
+maxAPI.addHandler('control', (head,...rest) => {
   // update controls
-  socket.emit('control', x);
+  socket.emit('control',  {header:head, values:rest});
 });
 maxAPI.addHandler('dump', () => {
   socket.emit('dump');

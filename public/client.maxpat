@@ -375,18 +375,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-286",
-					"linecount" : 5,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 244.020833849906921, 295.5, 172.0, 74.0 ],
-					"text" : "chat <list> (sends list to all connected. If you have added your username, other see that name, otherwise returns your socket id."
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-22",
 					"maxclass" : "newobj",
 					"numinlets" : 0,
@@ -892,7 +880,6 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-3",

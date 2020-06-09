@@ -4,7 +4,6 @@ const path = require('path');
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const PORT = process.env.PORT || 80;
-const date = new Date();
 var verbose = 0;
 // store everythin here for now:
 var userData=[];
@@ -67,7 +66,7 @@ function updateDict(socket,userData,prop,header,values) {
     const newStuff = {
       head: header,
       value: values,
-      time: date.getTime()
+      time: new Date().getTime()
     }
     // broadcasts a prop to all clients
     broadcast(socket, prop, newStuff);
@@ -101,7 +100,7 @@ io.sockets.on('connection', function(socket) {
       control: [],
       chat: []
     },  
-    time: date.getTime()
+    time: new Date().getTime()
   })
   /*
    *
