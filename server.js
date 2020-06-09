@@ -98,7 +98,12 @@ io.sockets.on('connection', function(socket) {
    */
   userData.push({ 
     id: sid, 
-    data: [],  
+    data: {
+      name: '',
+      event: [],
+      control: [],
+      chat: []
+    },  
     time: date.getTime()
   })
   /*
@@ -136,7 +141,7 @@ io.sockets.on('connection', function(socket) {
   socket.on('name',function(x) {
     var m;
     // check if user object has a 'name' property
-    if ( usr[0].data.hasOwnProperty('name') ) {
+    if ( usr[0].data.hasOwnProperty('name') && usr[0].data.name) {
       // get the users old name
       var old=usr[0].data.name;
 
