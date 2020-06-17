@@ -29,7 +29,7 @@ function getObjectReference(arr, key, val) {
    * where 'key' matches with value 'val'
    * 
    */
-  var i=0;
+  var i=0, entry;
   for (var i=0; i<arr.length; i++) {
     entry = arr[i];
     if (!entry[key].localeCompare(val)) {
@@ -123,13 +123,9 @@ io.sockets.on('connection', function(socket) {
    *  
    */
   socket.on('disconnect', function() {
-    if (usr) {
-      var m = (usr[0].data.name?usr[0].data.name:usr[0].id) + " disconnected.";
-      userData.splice(usr[1],1);
-      broadcast(socket, 'console', m);
-    } else {
-      console.error(usr, sid + ": 'usr' is undefined.." );
-    }
+    var m = (usr[0].data.name?usr[0].data.name:usr[0].id) + " disconnected.";
+    userData.splice(usr[1],1);
+    broadcast(socket, 'console', m);
     broadcast(socket, 'users', userData.length);
   });
   /*
