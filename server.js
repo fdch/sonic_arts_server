@@ -31,13 +31,19 @@ function getObjectReference(arr, key, val) {
    */
   var i=0, entry;
   for (var i=0; i<arr.length; i++) {
-    entry = arr[i];
-    if (!entry[key].localeCompare(val)) {
+    if (!arr[i][key].localeCompare(val)) {
       // get the entry that matches our id
-      return [entry,i];
+      entry = arr[i];
+      break;
     }
-    i++;
   }
+  if (entry) {
+    return [ entry, i ];
+  }
+  else {
+    console.error(arr, "Could not find reference.");
+  }
+
 }
 function getUserList(arr) {
   /* 
