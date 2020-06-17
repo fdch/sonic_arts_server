@@ -31,11 +31,11 @@ maxAPI.addHandler('chat', (x) => {
 });
 maxAPI.addHandler('event', (head,...rest) => {
   // add an event
-  socket.emit('event', {header:head, values:rest});
+  socket.emit('event', head, rest);
 });
 maxAPI.addHandler('control', (head,...rest) => {
   // update controls
-  socket.emit('control',  {header:head, values:rest});
+  socket.emit('control',  head, rest);
 });
 maxAPI.addHandler('dump', () => {
   socket.emit('dump');
@@ -61,7 +61,12 @@ socket.on('chat', function(data) {
   maxAPI.outlet(data);
 });
 socket.on('event', function(data) {
-  maxAPI.outlet(data);
+  // var event = {
+  //   header : ,
+  //   values : data.values,
+  //   time : data.time
+  // }
+  maxAPI.outlet('event',data);
 });
 socket.on('control', function(data) {
   maxAPI.outlet(data);
