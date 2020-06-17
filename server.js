@@ -70,7 +70,7 @@ function getUserList(arr) {
   }
   return userlist.join(" ");
 }
-function broadcast(socket,head,data) {
+function broadcast(socket,head,...data) {
   socket.broadcast.emit(head,data); 
   if (verbose) console.log(head+": "+data);
 }
@@ -234,12 +234,8 @@ io.sockets.on('connection', function(socket) {
           values = x
     updateDict(socket, usrData, prop, header, values);
   });
-  socket.on('event', function(head,...rest) {
-    var   usrData = usr[0].data,
-          prop = 'event',
-          header = head,
-          values = rest
-    updateDict(socket, usrData, prop, header, values);
+  socket.on('event', function(data) {
+    updateDict(socket, usr[0].data, "event", data.header, data.values);
   });
   socket.on('control', function(head,...rest) {
     var   usrData = usr[0].data,

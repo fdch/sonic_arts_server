@@ -31,11 +31,11 @@ maxAPI.addHandler('chat', (x) => {
 });
 maxAPI.addHandler('event', (head,...rest) => {
   // add an event
-  socket.emit('event', head, rest);
+  socket.emit('event', {header:head, values:rest});
 });
 maxAPI.addHandler('control', (head,...rest) => {
   // update controls
-  socket.emit('control',  head, rest);
+  socket.emit('control',  {header:head, values:rest});
 });
 maxAPI.addHandler('dump', () => {
   socket.emit('dump');
