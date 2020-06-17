@@ -123,9 +123,13 @@ io.sockets.on('connection', function(socket) {
    *  
    */
   socket.on('disconnect', function() {
-    var m = (usr[0].data.name?usr[0].data.name:usr[0].id) + " disconnected.";
-    userData.splice(usr[1],1);
-    broadcast(socket, 'console', m);
+    if (usr) {
+      var m = (usr[0].data.name?usr[0].data.name:usr[0].id) + " disconnected.";
+      userData.splice(usr[1],1);
+      broadcast(socket, 'console', m);
+    } else {
+      console.error(usr, sid + ": 'usr' is undefined.." );
+    }
     broadcast(socket, 'users', userData.length);
   });
   /*
