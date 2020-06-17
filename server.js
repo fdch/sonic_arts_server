@@ -60,7 +60,13 @@ function getUserList(arr) {
    */
   var userlist=[];
   for (var i=0; i<arr.length; i++) {
-    userlist.push(arr[i].data.name ? arr[i].data.name : arr[i].id)
+    var name=''
+    if ( arr[i].data.hasOwnProperty('name') && arr[i].data.name) {
+      name = arr[i].data.name;
+    } else {
+      name = arr[i].id;
+    }
+    userlist.push(name);
   }
   return userlist.join(" ");
 }
