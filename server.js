@@ -4,7 +4,7 @@ const path = require('path');
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const PORT = process.env.PORT || 80;
-var verbose = 0;
+var verbose = 0, store = 0;
 // store everythin here for now:
 var userData=[];
 
@@ -82,11 +82,13 @@ function updateDict(socket,userData,prop,header,values) {
     }
     // broadcasts a prop to all clients
     broadcast(socket, prop, newStuff);
+    
+    if (store) {
+      // if there is none, push a prop property to the object
+      if (!userData.hasOwnProperty(prop)) userData.prop = [];
 
-    // if there is none, push a prop property to the object
-    if (!userData.hasOwnProperty(prop)) userData.prop = [];
-
-    userData[prop].push(newStuff);
+      userData[prop].push(newStuff);
+    }
 }
 /*
  *
