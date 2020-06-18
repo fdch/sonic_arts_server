@@ -121,7 +121,7 @@ io.sockets.on('connection', function(socket) {
    * Report connection and how many users are online
    *
    */
-  broadcast(socket,'connected');
+  socket.emit('connected');
   broadcast(socket,'users',userData.length);
   /*
    *
