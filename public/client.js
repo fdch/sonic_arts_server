@@ -80,3 +80,6 @@ socket.on('control', function(data) {
 socket.on('dump', function(data) {
   maxAPI.outlet(data);
 });
+socket.on('connected', function() {
+  maxAPI.outlet('/connected');
+});

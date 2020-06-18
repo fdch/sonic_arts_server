@@ -118,9 +118,10 @@ io.sockets.on('connection', function(socket) {
   })
   /*
    *
-   * Report how many users are online
+   * Report connection and how many users are online
    *
    */
+  broadcast(socket,'connected');
   broadcast(socket,'users',userData.length);
   /*
    *
