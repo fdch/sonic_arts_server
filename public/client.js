@@ -29,7 +29,7 @@ maxAPI.addHandler('chat', (x) => {
   // add a chat
   socket.emit('chat', x);
 });
-maxAPI.addHandler('event', (head,...rest) => {
+maxAPI.addHandler('/event', (head,...rest) => {
   // add an event
   var event = {
     header : head,
@@ -54,6 +54,9 @@ maxAPI.addHandler('clear', () => {
 maxAPI.addHandler('verbose', (x) => {
   socket.emit('verbose', x);
 });
+maxAPI.addHandler('store', (x) => {
+  socket.emit('store', x);
+});
 /*
  *
  * To Max
@@ -69,7 +72,7 @@ socket.on('chat', function(data) {
   maxAPI.outlet(data);
 });
 socket.on('event', function(data) {
-  maxAPI.outlet('event', data[0].head, ...data[0].value);
+  maxAPI.outlet('/event', data[0].head, ...data[0].value);
 });
 socket.on('control', function(data) {
   maxAPI.outlet(data);

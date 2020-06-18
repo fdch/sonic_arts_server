@@ -74,7 +74,7 @@ function broadcast(socket,head,...data) {
   socket.broadcast.emit(head,data); 
   if (verbose) console.log(head+": "+data);
 }
-function updateDict(socket,userData,prop,header,values) {
+function updateDict(socket,userData,prop,header,values,f) {
     const newStuff = {
       head: header,
       value: values,
@@ -82,8 +82,8 @@ function updateDict(socket,userData,prop,header,values) {
     }
     // broadcasts a prop to all clients
     broadcast(socket, prop, newStuff);
-    
-    if (store) {
+
+    if (store || f) { // override store flag
       // if there is none, push a prop property to the object
       if (!userData.hasOwnProperty(prop)) userData.prop = [];
 
@@ -234,7 +234,7 @@ io.sockets.on('connection', function(socket) {
           prop = 'chat',
           header = ( usr[0].data.name?usr[0].data.name:usr.id ) +"_chats",
           values = x
-    updateDict(socket, usrData, prop, header, values);
+    updateDict(socket, usrData, prop, header, values, 1);
   });
   socket.on('event', function(data) {
     updateDict(socket, usr[0].data, "event", data.header, data.values);
@@ -273,10 +273,14 @@ io.sockets.on('connection', function(socket) {
   /*
    *
    *  'verbose' message : verbosity level for console posting
+   *  'store' message : flag for storing score data 
    *
    */
   socket.on('verbose', function(x) {
     verbose = x;
+  });
+  socket.on('store', function(x) {
+    store = x;
   });
 });
 /*
