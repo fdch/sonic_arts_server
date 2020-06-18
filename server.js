@@ -171,7 +171,7 @@ io.sockets.on('connection', function(socket) {
     }
     // broadcast a name change if there was one
     if (m) {
-      broadcast(socket,'console',m);
+      broadcast(socket,'users',m);
       broadcast(socket,'users',getUserList(userData));
     }
   });
@@ -233,8 +233,12 @@ io.sockets.on('connection', function(socket) {
   socket.on('chat', function(x) {
     var   usrData = usr[0].data,
           prop = 'chat',
-          header = ( usr[0].data.name?usr[0].data.name:usr.id ) +"_chats",
-          values = x
+          values = x;
+    if ( usr[0].data.hasOwnProperty('name') && usr[0].data.name) {
+      header = usr[0].data.name;
+    } else {
+      header = usr[0].id;
+    }
     updateDict(socket, usrData, prop, header, values, 1);
   });
   socket.on('event', function(data) {

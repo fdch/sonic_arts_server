@@ -8,24 +8,29 @@ const server = "https://sonic-arts-server.herokuapp.com";
 const maxAPI = require('max-api');
 const io     = require('socket.io-client');
 const socket = io.connect(server);
+
+function outlet(address, data) {
+  maxAPI.outlet(address, data[0].head, ...data[0].value);
+}
+
 /*
  *
  * From Max
  *
  */
-maxAPI.addHandler('name', (x) => {
+maxAPI.addHandler('/name', (x) => {
   // name change
   socket.emit('name', x);
 });
-maxAPI.addHandler('users', () => {
+maxAPI.addHandler('/users', () => {
   // users list
   socket.emit('users');
 });
-maxAPI.addHandler('chats', (x) => {
+maxAPI.addHandler('/chats', (x) => {
   // chats message
   socket.emit('chats', x);
 });
-maxAPI.addHandler('chat', (x) => {
+maxAPI.addHandler('/chat', (x) => {
   // add a chat
   socket.emit('chat', x);
 });
@@ -37,7 +42,7 @@ maxAPI.addHandler('/event', (head,...rest) => {
   };
   socket.emit('event', event);
 });
-maxAPI.addHandler('control', (head,...rest) => {
+maxAPI.addHandler('/control', (head,...rest) => {
   // update controls
   var control = {
     header : head,
@@ -45,16 +50,16 @@ maxAPI.addHandler('control', (head,...rest) => {
   };
   socket.emit('control',  control);
 });
-maxAPI.addHandler('dump', () => {
+maxAPI.addHandler('/dump', () => {
   socket.emit('dump');
 });
-maxAPI.addHandler('clear', () => {
+maxAPI.addHandler('/clear', () => {
   socket.emit('clear');
 });
-maxAPI.addHandler('verbose', (x) => {
+maxAPI.addHandler('/verbose', (x) => {
   socket.emit('verbose', x);
 });
-maxAPI.addHandler('store', (x) => {
+maxAPI.addHandler('/store', (x) => {
   socket.emit('store', x);
 });
 /*
@@ -63,22 +68,22 @@ maxAPI.addHandler('store', (x) => {
  *
  */
 socket.on('users', function(data) {
-  maxAPI.outlet(data);
+  maxAPI.outlet('/users',data);
 });
 socket.on('console', function(data) {
-  maxAPI.outlet(data);
+  maxAPI.post(data);
 });
 socket.on('chat', function(data) {
-  maxAPI.outlet(data);
+  outlet('/chat',data);
 });
 socket.on('event', function(data) {
-  maxAPI.outlet('/event', data[0].head, ...data[0].value);
+  outlet('/event', data);
 });
 socket.on('control', function(data) {
-  maxAPI.outlet(data);
+  outlet('/control', data);
 });
 socket.on('dump', function(data) {
-  maxAPI.outlet(data);
+  maxAPI.outlet('/dump', data);
 });
 socket.on('connected', function() {
   maxAPI.outlet('/connected');
