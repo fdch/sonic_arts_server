@@ -142,9 +142,8 @@ io.sockets.on('connection', function(socket) {
    *  
    */
   socket.on('disconnect', function() {
-    var m = getUsername(u) + " disconnected.";
     userData.splice(ui,1);
-    broadcast(socket, 'console', m);
+    broadcast(socket, 'console', getUsername(u) + " disconnected.");
     broadcast(socket, 'users', userData.length);
   });
   /*
@@ -239,8 +238,7 @@ io.sockets.on('connection', function(socket) {
     var   usrData = u.data,
           prop = 'chat',
           values = x;
-    var header = getUsername(u);
-    updateDict(socket, usrData, prop, header, values, 1);
+    updateDict(socket, usrData, prop, getUsername(u), values, 1);
   });
   socket.on('event', function(data) {
     updateDict(socket, u.data, "event", data.header, data.values);
@@ -259,8 +257,7 @@ io.sockets.on('connection', function(socket) {
    */
   socket.on('dump', function() {
     // wipes out the server-side storage of user data
-    var u = getUsername(u);
-    var m = 'All user data dumped to ' + u;
+    var m = 'All user data dumped to ' + getUsername(u);
     broadcast(socket,'users',m);
     socket.emit('dump',userData);
   });
@@ -271,8 +268,7 @@ io.sockets.on('connection', function(socket) {
    */
   socket.on('clear', function() {
     // wipes out the server-side storage of user data
-    var u = getUsername(u);
-    var m = 'All user data cleared by ' + u;
+    var m = 'All user data cleared by ' + getUsername(u);
     broadcast(socket,'users',m);
     userData=[];
   });
