@@ -43,31 +43,33 @@ function getObjectReference(arr, key, val) {
   else {
     console.error(arr, "Could not find reference.");
   }
-
+}
+function getUsername(u) {
+  /*
+   * returns a string with the user name 
+   * if user.data.name does not exist, the user.id is appended instead
+   * 
+   * NOTE:
+   * u must be a dict with the form
+   *    user.id
+   *    user.data
+   *    user.data.name
+   * 
+   */
+  if ( u.data.hasOwnProperty('name') && u.data.name) {
+    return u.data.name;
+  } else {
+    return u.id;
+  }
 }
 function getUserList(arr) {
   /* 
    * returns a string with all usernames or user id 
    * that exist within userData (the input array)
    * 
-   * NOTE:
-   * arr must be in the form
-   *    user.id
-   *    user.data
-   * 
-   * if user.data.name does not exist, the user.id is appended instead
-   * 
    */
   var userlist=[];
-  for (var i=0; i<arr.length; i++) {
-    var name=''
-    if ( arr[i].data.hasOwnProperty('name') && arr[i].data.name) {
-      name = arr[i].data.name;
-    } else {
-      name = arr[i].id;
-    }
-    userlist.push(name);
-  }
+  for (var i=0; i<arr.length; i++) userlist.push(getUsername(arr[i]));
   return userlist.join(" ");
 }
 function broadcast(socket,head,...data) {
@@ -98,7 +100,7 @@ function updateDict(socket,userData,prop,header,values,f) {
  *
  */
 io.sockets.on('connection', function(socket) {
-  var sid = socket.id;
+  var usr=[], u, ui, sid = socket.id;
   /*
    *   
    *  Update the userData with the new socket id 
@@ -128,7 +130,9 @@ io.sockets.on('connection', function(socket) {
    * get user reference and index for later use
    *
    */
-  var usr = getObjectReference(userData, 'id', sid);
+  usr = getObjectReference(userData, 'id', sid);
+  u   = usr[0];
+  ui  = usr[1];
   /*
    *
    * Handles user disconnecting
@@ -138,8 +142,8 @@ io.sockets.on('connection', function(socket) {
    *  
    */
   socket.on('disconnect', function() {
-    var m = (usr[0].data.name?usr[0].data.name:usr[0].id) + " disconnected.";
-    userData.splice(usr[1],1);
+    var m = getUsername(u) + " disconnected.";
+    userData.splice(ui,1);
     broadcast(socket, 'console', m);
     broadcast(socket, 'users', userData.length);
   });
@@ -152,13 +156,13 @@ io.sockets.on('connection', function(socket) {
   socket.on('name',function(x) {
     var m;
     // check if user object has a 'name' property
-    if ( usr[0].data.hasOwnProperty('name') && usr[0].data.name) {
+    if ( u.data.hasOwnProperty('name') && u.data.name) {
       // get the users old name
-      var old=usr[0].data.name;
+      var old=u.data.name;
 
       // check if the old name is different from the new name (x)
       if (old.localeCompare(x)) {
-        usr[0].data.name = x;
+        u.data.name = x;
         m = old + " changed name to: " + x + ".";
       } else {
         // no need to change the name
@@ -166,13 +170,14 @@ io.sockets.on('connection', function(socket) {
       }
     } else {
       // add a name property to the object with value x
-      usr[0].data.name = x;
+      u.data.name = x;
       m = "User '"+socket.id+"' now has a name. Welcome, "+x+"!";
     }
-    // broadcast a name change if there was one
     if (m) {
+      // broadcast a name change if there was one
+      // and send the new user the list of all users
       broadcast(socket,'users',m);
-      broadcast(socket,'users',getUserList(userData));
+      socket.emit('users', getUserList(userData));
     }
   });
   /*
@@ -187,14 +192,14 @@ io.sockets.on('connection', function(socket) {
    */
   socket.on('users', function() {
     // emits a list of user names or ids to the caller
-    socket.emit('users',getUserList(userData));
+    socket.emit('users', getUserList(userData));
   })
   socket.on('chats', function() {
     var m, x = arguments[1];
     switch (x) {
       case undefined:
-        if (usr[0].data.hasOwnProperty('chat')) {
-          m = usr[0].data.chat;
+        if (u.data.hasOwnProperty('chat')) {
+          m = u.data.chat;
         } else {
           m = "You have not chatted.";
         }
@@ -231,21 +236,17 @@ io.sockets.on('connection', function(socket) {
    *
    */
   socket.on('chat', function(x) {
-    var   usrData = usr[0].data,
+    var   usrData = u.data,
           prop = 'chat',
           values = x;
-    if ( usr[0].data.hasOwnProperty('name') && usr[0].data.name) {
-      header = usr[0].data.name;
-    } else {
-      header = usr[0].id;
-    }
+    var header = getUsername(u);
     updateDict(socket, usrData, prop, header, values, 1);
   });
   socket.on('event', function(data) {
-    updateDict(socket, usr[0].data, "event", data.header, data.values);
+    updateDict(socket, u.data, "event", data.header, data.values);
   });
   socket.on('control', function(head,...rest) {
-    var   usrData = usr[0].data,
+    var   usrData = u.data,
           prop = 'control',
           header = head,
           values = rest
@@ -258,7 +259,7 @@ io.sockets.on('connection', function(socket) {
    */
   socket.on('dump', function() {
     // wipes out the server-side storage of user data
-    var u = usr[0].data.name?usr[0].data.name:usr[0].id;
+    var u = getUsername(u);
     var m = 'All user data dumped to ' + u;
     broadcast(socket,'users',m);
     socket.emit('dump',userData);
@@ -270,7 +271,7 @@ io.sockets.on('connection', function(socket) {
    */
   socket.on('clear', function() {
     // wipes out the server-side storage of user data
-    var u = usr[0].data.name?usr[0].data.name:usr[0].id;
+    var u = getUsername(u);
     var m = 'All user data cleared by ' + u;
     broadcast(socket,'users',m);
     userData=[];

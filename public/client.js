@@ -8,11 +8,6 @@ const server = "https://sonic-arts-server.herokuapp.com";
 const maxAPI = require('max-api');
 const io     = require('socket.io-client');
 const socket = io.connect(server);
-
-function outlet(address, data) {
-  maxAPI.outlet(address, data[0].head, ...data[0].value);
-}
-
 /*
  *
  * From Max
@@ -68,19 +63,19 @@ maxAPI.addHandler('/store', (x) => {
  *
  */
 socket.on('users', function(data) {
-  maxAPI.outlet('/users',data);
+  maxAPI.outlet('/users', data);
 });
 socket.on('console', function(data) {
   maxAPI.post(data);
 });
 socket.on('chat', function(data) {
-  outlet('/chat',data);
+  maxAPI.outlet('/chat', data[0].head, data[0].value);
 });
 socket.on('event', function(data) {
-  outlet('/event', data);
+  maxAPI.outlet('/event', data[0].head, ...data[0].value);
 });
 socket.on('control', function(data) {
-  outlet('/control', data);
+  maxAPI.outlet('/control', data[0].head, ...data[0].value);
 });
 socket.on('dump', function(data) {
   maxAPI.outlet('/dump', data);

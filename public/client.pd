@@ -13,7 +13,7 @@
 #X obj 69 226 list prepend event1;
 #X floatatom 152 134 5 0 0 0 - - -;
 #X msg 151 157 \$1 2 3;
-#X obj 328 156 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 328 156 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 328 176 metro 1000;
 #X obj 328 202 random 100;
@@ -21,7 +21,6 @@
 #X obj 328 58 oscparse;
 #X obj 328 84 list trim;
 #X obj 22 4 loadbang;
-#X obj 328 114 route tester event;
 #X obj 437 178 route event1;
 #X obj 70 337 t a b;
 #X obj 438 250 t b a;
@@ -30,10 +29,15 @@
 #X obj 365 403 list prepend;
 #X obj 365 429 print;
 #X obj 365 377 list prepend latency;
+#X obj 328 114 route tester event chat;
+#X obj 537 232 list split 1;
+#X obj 538 285 symbol;
+#X symbolatom 538 311 10 0 0 0 - - -;
+#X symbolatom 547 348 0 0 0 0 - - -;
 #X connect 0 0 5 0;
 #X connect 2 0 10 0;
 #X connect 3 0 4 0;
-#X connect 4 0 22 0;
+#X connect 4 0 21 0;
 #X connect 5 0 1 0;
 #X connect 6 0 10 0;
 #X connect 7 0 10 0;
@@ -47,16 +51,20 @@
 #X connect 15 0 2 0;
 #X connect 16 0 17 0;
 #X connect 17 0 18 0;
-#X connect 18 0 20 0;
+#X connect 18 0 28 0;
 #X connect 19 0 0 0;
-#X connect 20 0 13 0;
-#X connect 20 1 21 0;
-#X connect 21 0 23 0;
-#X connect 22 0 5 0;
-#X connect 22 1 24 0;
-#X connect 23 0 24 1;
-#X connect 23 1 26 1;
-#X connect 24 0 25 0;
-#X connect 25 0 28 0;
-#X connect 26 0 27 0;
-#X connect 28 0 26 0;
+#X connect 20 0 22 0;
+#X connect 21 0 5 0;
+#X connect 21 1 23 0;
+#X connect 22 0 23 1;
+#X connect 22 1 25 1;
+#X connect 23 0 24 0;
+#X connect 24 0 27 0;
+#X connect 25 0 26 0;
+#X connect 27 0 25 0;
+#X connect 28 0 13 0;
+#X connect 28 1 20 0;
+#X connect 28 2 29 0;
+#X connect 29 0 30 0;
+#X connect 29 1 32 0;
+#X connect 30 0 31 0;
