@@ -218,7 +218,7 @@ io.sockets.on('connection', function(socket) {
             m=user.data.chat;
           }
         }
-        if (!m) m = x + " has not been very talkative...";
+        if (!m) m = x + " has not been very talkative... No chats found.";
     }
     socket.emit('chat', m);
   });
