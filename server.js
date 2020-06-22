@@ -243,12 +243,8 @@ io.sockets.on('connection', function(socket) {
   socket.on('event', function(data) {
     updateDict(socket, u.data, "event", data.header, data.values);
   });
-  socket.on('control', function(head,...rest) {
-    var   usrData = u.data,
-          prop = 'control',
-          header = head,
-          values = rest
-    updateDict(socket, usrData, prop, header, values);
+  socket.on('control', function(data) {
+    updateDict(socket, u.data, 'control', data.header, data.values);
   });
   /*
    *
