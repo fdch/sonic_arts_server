@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 78.0, 106.0, 718.0, 422.0 ],
+		"rect" : [ 126.0, 109.0, 718.0, 422.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,12 +39,24 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-10",
+					"linecount" : 5,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 569.5, 141.928571428571445, 100.0, 74.0 ],
+					"text" : "Addresses are special messages prepended with a \"/\" symbol"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-21",
 					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 32.0, 292.0, 315.0, 33.0 ],
+					"patching_rect" : [ 46.5, 336.0, 315.0, 33.0 ],
 					"text" : "NOTE: remember the 'node' and 'node-set' [send]s and [receive]s to better understand this patch"
 				}
 
@@ -55,7 +67,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 528.0, 303.5, 150.0, 20.0 ],
+					"patching_rect" : [ 498.0, 350.5, 150.0, 20.0 ],
 					"text" : "not used so far:"
 				}
 
@@ -69,7 +81,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 27.0, 339.0, 150.0, 24.0 ],
+					"patching_rect" : [ 405.5, 21.0, 150.0, 24.0 ],
 					"text" : "Start the scripts:"
 				}
 
@@ -80,7 +92,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 80.5, 371.0, 234.5, 20.0 ],
+					"patching_rect" : [ 451.5, 50.0, 234.5, 20.0 ],
 					"text" : "<-- 1. Before continuing, start the scripts"
 				}
 
@@ -93,7 +105,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 192.5, 215.5, 216.5, 60.0 ],
+					"patching_rect" : [ 214.5, 245.5, 167.0, 60.0 ],
 					"text" : "The second node ('node-2') mimicks another player/client that gets the messages that you (aka 'node') are sending."
 				}
 
@@ -102,11 +114,11 @@
 				"box" : 				{
 					"bgcolor" : [ 0.373580098152161, 0.772273182868958, 0.33240270614624, 1.0 ],
 					"id" : "obj-113",
-					"linecount" : 3,
+					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 31.5, 215.5, 134.0, 47.0 ],
+					"patching_rect" : [ 31.5, 245.5, 156.0, 33.0 ],
 					"text" : "The main node ('node') will be you as one player/client. "
 				}
 
@@ -119,7 +131,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 27.0, 38.0, 362.0, 47.0 ],
+					"patching_rect" : [ 27.0, 68.0, 354.0, 47.0 ],
 					"text" : "This patch launches two clients using the same 'clients.js' file. The clients connect to a heroku-hosted server at http://sonic-arts-server.herokuapp.com. "
 				}
 
@@ -133,7 +145,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 188.0, 99.0, 150.0, 24.0 ],
+					"patching_rect" : [ 214.5, 126.0, 150.0, 24.0 ],
 					"text" : "The second node:"
 				}
 
@@ -147,7 +159,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 27.0, 99.0, 150.0, 24.0 ],
+					"patching_rect" : [ 27.0, 126.0, 150.0, 24.0 ],
 					"text" : "The main node:"
 				}
 
@@ -158,11 +170,12 @@
 					"fontname" : "Arial",
 					"fontsize" : 16.0,
 					"id" : "obj-28",
+					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 27.0, 12.0, 490.0, 24.0 ],
-					"text" : "Sonic Arts Ensemble Server (client example with two nodes)"
+					"patching_rect" : [ 27.0, 12.0, 257.0, 42.0 ],
+					"text" : "Sonic Arts Ensemble Server\n(client example with two nodes)"
 				}
 
 			}
@@ -172,7 +185,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 249.5, 179.5, 75.0, 22.0 ],
+					"patching_rect" : [ 306.5, 212.5, 75.0, 22.0 ],
 					"text" : "s node-2-log"
 				}
 
@@ -183,7 +196,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 81.5, 174.5, 65.0, 22.0 ],
+					"patching_rect" : [ 122.5, 212.5, 65.0, 22.0 ],
 					"text" : "s node-log"
 				}
 
@@ -191,12 +204,12 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-95",
-					"linecount" : 3,
+					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 435.5, 38.0, 264.0, 47.0 ],
-					"text" : "2. Open these subpatches to check the allowed addresses. Addresses are special messages prepended with a \"/\" symbol"
+					"patching_rect" : [ 405.5, 79.0, 264.0, 33.0 ],
+					"text" : "2. Open these subpatches to check the allowed addresses"
 				}
 
 			}
@@ -206,7 +219,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 191.5, 179.5, 56.0, 22.0 ],
+					"patching_rect" : [ 214.5, 212.5, 56.0, 22.0 ],
 					"text" : "s node-2"
 				}
 
@@ -218,7 +231,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 191.5, 124.5, 73.0, 22.0 ],
+					"patching_rect" : [ 214.5, 152.5, 73.0, 22.0 ],
 					"text" : "r node-2-set"
 				}
 
@@ -229,7 +242,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 30.5, 174.5, 45.0, 22.0 ],
+					"patching_rect" : [ 30.5, 212.5, 45.0, 22.0 ],
 					"text" : "s node"
 				}
 
@@ -241,10 +254,12 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 191.5, 153.0, 111.0, 22.0 ],
+					"patching_rect" : [ 214.5, 180.5, 111.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -259,7 +274,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 30.5, 120.5, 63.0, 22.0 ],
+					"patching_rect" : [ 30.5, 152.5, 63.0, 22.0 ],
 					"text" : "r node-set"
 				}
 
@@ -271,10 +286,12 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 30.5, 148.0, 111.0, 22.0 ],
+					"patching_rect" : [ 30.5, 180.5, 111.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -299,7 +316,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 59.0, 81.0, 640.0, 480.0 ],
+						"rect" : [ 870.0, 155.0, 640.0, 480.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -573,7 +590,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 435.5, 324.357142857142833, 57.0, 22.0 ],
+					"patching_rect" : [ 405.5, 371.357142857142833, 57.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -724,7 +741,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 435.5, 225.5, 65.0, 22.0 ],
+					"patching_rect" : [ 405.5, 255.5, 65.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -1903,7 +1920,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 435.5, 189.214285714285666, 94.0, 22.0 ],
+					"patching_rect" : [ 405.5, 219.214285714285666, 94.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -1959,8 +1976,18 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
-						"visible" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-2",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 395.0, 175.0, 31.0, 20.0 ],
+									"text" : "-->"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"bgcolor" : [ 0.99531626701355, 0.771263241767883, 0.092638939619064, 1.0 ],
 									"id" : "obj-201",
@@ -2006,7 +2033,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 287.5, 242.0, 124.0, 22.0 ],
+									"patching_rect" : [ 434.5, 202.0, 124.0, 22.0 ],
 									"text" : "print dump @popup 1"
 								}
 
@@ -2018,7 +2045,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 287.5, 215.0, 73.0, 22.0 ],
+									"patching_rect" : [ 434.5, 175.0, 73.0, 22.0 ],
 									"text" : "route /dump"
 								}
 
@@ -2030,7 +2057,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 287.5, 188.0, 43.0, 22.0 ],
+									"patching_rect" : [ 434.5, 148.0, 43.0, 22.0 ],
 									"text" : "r node"
 								}
 
@@ -2097,7 +2124,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 287.5, 148.0, 92.0, 35.0 ],
+									"patching_rect" : [ 287.5, 169.0, 92.0, 35.0 ],
 									"text" : ";\rnode-set /dump"
 								}
 
@@ -2171,7 +2198,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 435.5, 156.071428571428555, 118.0, 22.0 ],
+					"patching_rect" : [ 405.5, 186.071428571428555, 118.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -2460,7 +2487,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 435.5, 122.928571428571445, 45.0, 22.0 ],
+					"patching_rect" : [ 405.5, 152.928571428571445, 45.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -2518,6 +2545,58 @@
 						"subpatcher_template" : "",
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-8",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 216.75, 282.0, 29.5, 22.0 ],
+									"text" : "joel"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-6",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 80.5, 282.0, 67.0, 22.0 ],
+									"text" : "clementine"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"bgcolor" : [ 0.99531626701355, 0.771263241767883, 0.092638939619064, 1.0 ],
+									"id" : "obj-1",
+									"linecount" : 2,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 27.5, 142.0, 234.5, 33.0 ],
+									"presentation_linecount" : 2,
+									"text" : "a '/name' address takes a symbol with the username for the current client"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 3,
+									"fontname" : "Arial",
+									"fontsize" : 16.0,
+									"id" : "obj-3",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 27.5, 116.0, 150.0, 24.0 ],
+									"text" : "/name <symbol>"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-4",
 									"linecount" : 2,
 									"maxclass" : "message",
@@ -2547,7 +2626,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 42.0, 345.0, 65.0, 22.0 ],
+									"patching_rect" : [ 33.0, 341.0, 65.0, 22.0 ],
 									"text" : "s node-set"
 								}
 
@@ -2559,7 +2638,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 42.0, 317.0, 89.0, 22.0 ],
+									"patching_rect" : [ 33.0, 313.0, 89.0, 22.0 ],
 									"text" : "prepend /name"
 								}
 
@@ -2571,7 +2650,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 42.0, 291.5, 39.0, 22.0 ],
+									"patching_rect" : [ 33.0, 272.5, 39.0, 22.0 ],
 									"text" : "user1"
 								}
 
@@ -2584,7 +2663,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 42.0, 259.0, 24.0, 24.0 ]
+									"patching_rect" : [ 48.0, 240.0, 24.0, 24.0 ]
 								}
 
 							}
@@ -2595,7 +2674,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 41.5, 230.5, 98.0, 22.0 ],
+									"patching_rect" : [ 47.5, 211.5, 98.0, 22.0 ],
 									"text" : "route /connected"
 								}
 
@@ -2607,7 +2686,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 41.5, 206.5, 43.0, 22.0 ],
+									"patching_rect" : [ 47.5, 187.5, 43.0, 22.0 ],
 									"text" : "r node"
 								}
 
@@ -2618,7 +2697,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 177.0, 345.0, 75.0, 22.0 ],
+									"patching_rect" : [ 168.0, 341.0, 75.0, 22.0 ],
 									"text" : "s node-2-set"
 								}
 
@@ -2630,7 +2709,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 177.0, 317.0, 89.0, 22.0 ],
+									"patching_rect" : [ 168.0, 313.0, 89.0, 22.0 ],
 									"text" : "prepend /name"
 								}
 
@@ -2642,7 +2721,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 177.0, 291.5, 39.0, 22.0 ],
+									"patching_rect" : [ 168.0, 272.5, 39.0, 22.0 ],
 									"text" : "user2"
 								}
 
@@ -2655,7 +2734,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 177.0, 259.0, 24.0, 24.0 ]
+									"patching_rect" : [ 183.0, 240.0, 24.0, 24.0 ]
 								}
 
 							}
@@ -2665,7 +2744,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 402.0, 255.5, 127.0, 22.0 ],
+									"patching_rect" : [ 447.5, 192.0, 127.0, 22.0 ],
 									"text" : "print users @popup 1"
 								}
 
@@ -2677,7 +2756,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 402.0, 228.5, 72.0, 22.0 ],
+									"patching_rect" : [ 447.5, 165.0, 72.0, 22.0 ],
 									"text" : "route /users"
 								}
 
@@ -2689,7 +2768,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 402.0, 201.5, 43.0, 22.0 ],
+									"patching_rect" : [ 447.5, 138.0, 43.0, 22.0 ],
 									"text" : "r node"
 								}
 
@@ -2729,7 +2808,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 378.0, 147.0, 91.0, 35.0 ],
+									"patching_rect" : [ 336.0, 146.0, 91.0, 35.0 ],
 									"text" : ";\rnode-set /users"
 								}
 
@@ -2742,7 +2821,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 41.5, 67.0, 234.5, 33.0 ],
+									"patching_rect" : [ 27.5, 67.0, 234.5, 33.0 ],
 									"text" : "a '/connected' address is returned upon a successful connection. "
 								}
 
@@ -2756,7 +2835,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 41.5, 41.0, 150.0, 24.0 ],
+									"patching_rect" : [ 27.5, 41.0, 150.0, 24.0 ],
 									"text" : "/connected"
 								}
 
@@ -2765,12 +2844,12 @@
 								"box" : 								{
 									"bgcolor" : [ 0.373580098152161, 0.772273182868958, 0.33240270614624, 1.0 ],
 									"id" : "obj-45",
-									"linecount" : 3,
+									"linecount" : 7,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 39.75, 147.0, 238.0, 47.0 ],
-									"text" : "Here '/connected' is used to automatically change the name of the client to a default name: \"user1\" and \"user2\""
+									"patching_rect" : [ 279.5, 253.5, 188.0, 100.0 ],
+									"text" : "Here '/connected' is used to automatically change the name of the client to a default '/name': \"user1\" and \"user2\"\n\nHhange to a different name to see how it works"
 								}
 
 							}
@@ -2781,7 +2860,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 176.5, 230.5, 98.0, 22.0 ],
+									"patching_rect" : [ 182.5, 211.5, 98.0, 22.0 ],
 									"text" : "route /connected"
 								}
 
@@ -2793,7 +2872,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 176.5, 206.5, 53.0, 22.0 ],
+									"patching_rect" : [ 182.5, 187.5, 53.0, 22.0 ],
 									"text" : "r node-2"
 								}
 
@@ -2883,6 +2962,20 @@
 								}
 
 							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-222", 0 ],
+									"source" : [ "obj-6", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-219", 0 ],
+									"source" : [ "obj-8", 0 ]
+								}
+
+							}
  ],
 						"styles" : [ 							{
 								"name" : "AudioStatus_Menu",
@@ -2905,7 +2998,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 435.5, 89.785714285714278, 113.0, 22.0 ],
+					"patching_rect" : [ 405.5, 119.785714285714278, 113.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -2963,6 +3056,19 @@
 						"subpatcher_template" : "",
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-5",
+									"linecount" : 2,
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 172.0, 281.0, 114.0, 35.0 ],
+									"text" : ";\rnode-set script start"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-3",
 									"maxclass" : "comment",
 									"numinlets" : 1,
@@ -2978,7 +3084,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 193.0, 79.0, 150.0, 20.0 ],
+									"patching_rect" : [ 193.0, 68.0, 150.0, 20.0 ],
 									"text" : "<-- installs node packages"
 								}
 
@@ -2986,11 +3092,10 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-8",
-									"linecount" : 2,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 34.5, 34.0, 150.0, 33.0 ],
+									"patching_rect" : [ 34.5, 34.0, 271.0, 20.0 ],
 									"text" : "1. First time only (or if a huge update was made):"
 								}
 
@@ -3003,7 +3108,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 34.5, 74.0, 148.0, 35.0 ],
+									"patching_rect" : [ 34.5, 63.0, 148.0, 35.0 ],
 									"text" : ";\rnode-set script npm install"
 								}
 
@@ -3439,7 +3544,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 31.5, 370.14285714285711, 42.0, 22.0 ],
+					"patching_rect" : [ 405.5, 50.0, 42.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -3531,7 +3636,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 342.0, 413.5, 190.0, 49.0 ],
-									"presentation_linecount" : 3,
 									"text" : ";\rto-udp-connection /send pd dsp 1;\rto-udp-connection /player $1"
 								}
 
@@ -3546,7 +3650,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 342.0, 327.5, 255.5, 24.0 ],
-									"presentation_linecount" : 2,
 									"text" : "Run quacktrip inside client.pd"
 								}
 
@@ -5100,7 +5203,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 435.5, 294.5, 35.0, 22.0 ],
+					"patching_rect" : [ 405.5, 341.5, 35.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -5121,7 +5224,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 435.5, 259.0, 199.0, 24.0 ],
+					"patching_rect" : [ 405.5, 306.0, 199.0, 24.0 ],
 					"text" : "More stuff:"
 				}
 
@@ -5576,7 +5679,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 530.0, 324.357142857142833, 101.0, 22.0 ],
+					"patching_rect" : [ 500.0, 371.357142857142833, 101.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
