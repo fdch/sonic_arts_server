@@ -81,7 +81,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 80.5, 371.0, 234.5, 20.0 ],
-					"presentation_linecount" : 2,
 					"text" : "<-- 1. Before continuing, start the scripts"
 				}
 
@@ -95,7 +94,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 192.5, 215.5, 216.5, 60.0 ],
-					"presentation_linecount" : 6,
 					"text" : "The second node ('node-2') mimicks another player/client that gets the messages that you (aka 'node') are sending."
 				}
 
@@ -108,8 +106,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 31.5, 215.5, 133.0, 47.0 ],
-					"presentation_linecount" : 2,
+					"patching_rect" : [ 31.5, 215.5, 134.0, 47.0 ],
 					"text" : "The main node ('node') will be you as one player/client. "
 				}
 
@@ -122,8 +119,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 27.0, 38.0, 361.0, 47.0 ],
-					"presentation_linecount" : 3,
+					"patching_rect" : [ 27.0, 38.0, 362.0, 47.0 ],
 					"text" : "This patch launches two clients using the same 'clients.js' file. The clients connect to a heroku-hosted server at http://sonic-arts-server.herokuapp.com. "
 				}
 
@@ -166,7 +162,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 27.0, 12.0, 490.0, 24.0 ],
-					"presentation_linecount" : 3,
 					"text" : "Sonic Arts Ensemble Server (client example with two nodes)"
 				}
 
@@ -200,8 +195,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 435.5, 38.0, 261.0, 47.0 ],
-					"presentation_linecount" : 6,
+					"patching_rect" : [ 435.5, 38.0, 264.0, 47.0 ],
 					"text" : "2. Open these subpatches to check the allowed addresses. Addresses are special messages prepended with a \"/\" symbol"
 				}
 
@@ -251,8 +245,6 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
-						"node_bin_path" : "",
-						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -283,8 +275,6 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
-						"node_bin_path" : "",
-						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -345,7 +335,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 33.5, 58.0, 247.0, 33.0 ],
-									"presentation_linecount" : 2,
 									"text" : "We check how much time passed between \"node\" sending and \"node-2\" receiving."
 								}
 
@@ -359,7 +348,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 240.5, 119.0, 185.0, 33.0 ],
-									"presentation_linecount" : 2,
 									"text" : "Open the /event patcher window to send out events."
 								}
 
@@ -1971,16 +1959,17 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"bgcolor" : [ 0.99531626701355, 0.771263241767883, 0.092638939619064, 1.0 ],
 									"id" : "obj-201",
-									"linecount" : 4,
+									"linecount" : 5,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 51.5, 322.5, 223.0, 60.0 ],
-									"text" : "a ' /clear' message deletes the currently stored dictionary of all actions.\nNOTE: this also deletes the list of all users... usually, you need to "
+									"patching_rect" : [ 51.5, 322.5, 223.0, 74.0 ],
+									"text" : "a ' /clear' message deletes the currently stored dictionary of all actions.\nNOTE: this also deletes the list of all users... usually, you need to restart the client scripts after doing this. "
 								}
 
 							}
@@ -2393,6 +2382,7 @@
 									"fontsize" : 13.0,
 									"id" : "obj-102",
 									"keymode" : 1,
+									"linecount" : 2,
 									"lines" : 1,
 									"maxclass" : "textedit",
 									"numinlets" : 1,
@@ -2401,7 +2391,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 35.5, 94.0, 158.0, 71.5 ],
 									"tabmode" : 0,
-									"text" : "hello there, how are you?"
+									"text" : "hello there, how are you doing toonite?"
 								}
 
 							}
@@ -2527,6 +2517,31 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-4",
+									"linecount" : 2,
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 243.0, 425.0, 88.0, 35.0 ],
+									"text" : ";\rnode-set /clear"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-2",
+									"linecount" : 2,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 80.5, 386.5, 481.0, 33.0 ],
+									"text" : "NOTE: only if you are re-starting, sometimes you need to '/clear' server-side storage before doing so. Otherwise you get old server-side stored and uncleared data."
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-221",
 									"maxclass" : "newobj",
@@ -2688,7 +2703,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 340.5, 67.0, 221.0, 60.0 ],
-									"presentation_linecount" : 4,
 									"text" : "a ' /users' message outputs the currently stored usernames (or user ids if they have not changed their names) as a list to the client who called it."
 								}
 
@@ -2716,7 +2730,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 378.0, 147.0, 91.0, 35.0 ],
-									"presentation_linecount" : 2,
 									"text" : ";\rnode-set /users"
 								}
 
@@ -2730,7 +2743,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 41.5, 67.0, 234.5, 33.0 ],
-									"presentation_linecount" : 2,
 									"text" : "a '/connected' address is returned upon a successful connection. "
 								}
 
@@ -2758,7 +2770,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 39.75, 147.0, 238.0, 47.0 ],
-									"presentation_linecount" : 3,
 									"text" : "Here '/connected' is used to automatically change the name of the client to a default name: \"user1\" and \"user2\""
 								}
 
@@ -2923,7 +2934,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 276.0, 92.0, 687.0, 561.0 ],
+						"rect" : [ 86.0, 108.0, 687.0, 561.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -2951,6 +2962,17 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-3",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 34.5, 344.0, 347.0, 20.0 ],
+									"text" : "You should see a 'users user1 user2' message on the console"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-11",
 									"maxclass" : "comment",
@@ -2994,7 +3016,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 226.0, 422.0, 88.0, 35.0 ],
+									"patching_rect" : [ 239.0, 458.0, 88.0, 35.0 ],
 									"text" : ";\rnode-set /clear"
 								}
 
@@ -3006,7 +3028,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 63.5, 383.5, 481.0, 33.0 ],
+									"patching_rect" : [ 76.5, 419.5, 481.0, 33.0 ],
 									"text" : "NOTE: only if you are re-starting, sometimes you need to '/clear' server-side storage before doing so. Otherwise you get old server-side stored and uncleared data."
 								}
 
@@ -3475,11 +3497,102 @@
 						"subpatcher_template" : "",
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-20",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 366.0, 368.5, 150.0, 20.0 ],
+									"text" : "<-- choose player"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"disabled" : [ 0, 0, 0 ],
+									"id" : "obj-11",
+									"itemtype" : 0,
+									"maxclass" : "radiogroup",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 342.0, 353.5, 18.0, 50.0 ],
+									"size" : 3,
+									"value" : 0
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-4",
+									"linecount" : 3,
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 342.0, 413.5, 190.0, 49.0 ],
+									"presentation_linecount" : 3,
+									"text" : ";\rto-udp-connection /send pd dsp 1;\rto-udp-connection /player $1"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 3,
+									"fontname" : "Arial",
+									"fontsize" : 16.0,
+									"id" : "obj-12",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 342.0, 327.5, 255.5, 24.0 ],
+									"presentation_linecount" : 2,
+									"text" : "Run quacktrip inside client.pd"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-9",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 319.0, 40.0, 150.0, 20.0 ],
+									"text" : "get Pd here:"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-5",
+									"linecount" : 2,
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 315.5, 62.5, 295.0, 35.0 ],
+									"text" : ";\rmax launchbrowser http://msp.ucsd.edu/software.html"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-3",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 315.5, 11.0, 306.0, 20.0 ],
+									"text" : "NOTE: Pd-0.51.app must be in your /Applications folder"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-2",
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 367.0, 270.0, 150.0, 20.0 ],
+									"patching_rect" : [ 167.0, 384.0, 150.0, 20.0 ],
 									"text" : "see here:"
 								}
 
@@ -3907,7 +4020,7 @@
  ]
 									}
 ,
-									"patching_rect" : [ 367.0, 323.5, 101.0, 22.0 ],
+									"patching_rect" : [ 167.0, 437.5, 101.0, 22.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
@@ -3936,7 +4049,7 @@
 										}
 ,
 										"classnamespace" : "box",
-										"rect" : [ 59.0, 81.0, 1018.0, 685.0 ],
+										"rect" : [ 34.0, 74.0, 1018.0, 685.0 ],
 										"bglocked" : 0,
 										"openinpresentation" : 0,
 										"default_fontsize" : 12.0,
@@ -3965,6 +4078,19 @@
 										"subpatcher_template" : "",
 										"boxes" : [ 											{
 												"box" : 												{
+													"id" : "obj-6",
+													"linecount" : 2,
+													"maxclass" : "message",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 738.0, 238.0, 201.0, 35.0 ],
+													"text" : "/Applications/Pd-0.51-0.app/Contents/Resources/bin/pd"
+												}
+
+											}
+, 											{
+												"box" : 												{
 													"id" : "obj-40",
 													"maxclass" : "newobj",
 													"numinlets" : 1,
@@ -3980,7 +4106,7 @@
 													"maxclass" : "comment",
 													"numinlets" : 1,
 													"numoutlets" : 0,
-													"patching_rect" : [ 763.0, 84.0, 150.0, 20.0 ],
+													"patching_rect" : [ 675.0, 81.0, 150.0, 20.0 ],
 													"text" : "get this patcher's path"
 												}
 
@@ -3992,7 +4118,7 @@
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "bang" ],
-													"patching_rect" : [ 690.0, 18.0, 58.0, 22.0 ],
+													"patching_rect" : [ 599.0, 12.0, 58.0, 22.0 ],
 													"text" : "loadbang"
 												}
 
@@ -4040,7 +4166,7 @@
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 738.0, 353.0, 87.0, 22.0 ],
+													"patching_rect" : [ 767.0, 318.0, 87.0, 22.0 ],
 													"text" : "append -stderr"
 												}
 
@@ -4052,21 +4178,8 @@
 													"numinlets" : 2,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 690.0, 53.0, 39.0, 22.0 ],
+													"patching_rect" : [ 599.0, 55.0, 39.0, 22.0 ],
 													"text" : "path"
-												}
-
-											}
-, 											{
-												"box" : 												{
-													"id" : "obj-17",
-													"linecount" : 2,
-													"maxclass" : "newobj",
-													"numinlets" : 2,
-													"numoutlets" : 2,
-													"outlettype" : [ "", "" ],
-													"patching_rect" : [ 738.0, 237.0, 236.0, 35.0 ],
-													"text" : "combine input-path Pd-0.51-0.app/Contents/Resources/bin/pd"
 												}
 
 											}
@@ -4077,7 +4190,7 @@
 													"numinlets" : 1,
 													"numoutlets" : 2,
 													"outlettype" : [ "", "" ],
-													"patching_rect" : [ 690.0, 84.0, 67.0, 22.0 ],
+													"patching_rect" : [ 599.0, 86.0, 67.0, 22.0 ],
 													"save" : [ "#N", "thispatcher", ";", "#Q", "end", ";" ],
 													"text" : "thispatcher"
 												}
@@ -4090,7 +4203,7 @@
 													"numinlets" : 1,
 													"numoutlets" : 2,
 													"outlettype" : [ "", "int" ],
-													"patching_rect" : [ 738.0, 114.0, 128.0, 22.0 ],
+													"patching_rect" : [ 247.0, 109.0, 128.0, 22.0 ],
 													"text" : "conformpath max boot"
 												}
 
@@ -4478,16 +4591,7 @@
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-17", 0 ],
-													"order" : 0,
-													"source" : [ "obj-15", 0 ]
-												}
-
-											}
-, 											{
-												"patchline" : 												{
 													"destination" : [ "obj-35", 0 ],
-													"order" : 1,
 													"source" : [ "obj-15", 0 ]
 												}
 
@@ -4550,13 +4654,6 @@
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-21", 0 ],
-													"source" : [ "obj-17", 0 ]
-												}
-
-											}
-, 											{
-												"patchline" : 												{
 													"destination" : [ "obj-154", 0 ],
 													"source" : [ "obj-171", 0 ]
 												}
@@ -4601,13 +4698,6 @@
 												"patchline" : 												{
 													"destination" : [ "obj-36", 0 ],
 													"source" : [ "obj-2", 0 ]
-												}
-
-											}
-, 											{
-												"patchline" : 												{
-													"destination" : [ "obj-26", 0 ],
-													"source" : [ "obj-21", 0 ]
 												}
 
 											}
@@ -4658,6 +4748,15 @@
 , 											{
 												"patchline" : 												{
 													"destination" : [ "obj-19", 0 ],
+													"order" : 1,
+													"source" : [ "obj-37", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-6", 0 ],
+													"order" : 0,
 													"source" : [ "obj-37", 0 ]
 												}
 
@@ -4666,6 +4765,13 @@
 												"patchline" : 												{
 													"destination" : [ "obj-63", 0 ],
 													"source" : [ "obj-45", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-26", 0 ],
+													"source" : [ "obj-6", 0 ]
 												}
 
 											}
@@ -4712,7 +4818,7 @@
  ]
 									}
 ,
-									"patching_rect" : [ 367.0, 299.5, 66.0, 22.0 ],
+									"patching_rect" : [ 167.0, 413.5, 66.0, 22.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
@@ -4733,7 +4839,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 333.5, 32.5, 297.0, 24.0 ],
+									"patching_rect" : [ 324.5, 131.5, 297.0, 24.0 ],
 									"text" : "Test UDP connection (starts printing)"
 								}
 
@@ -4744,7 +4850,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 367.0, 194.5, 145.0, 22.0 ],
+									"patching_rect" : [ 334.5, 264.25, 145.0, 22.0 ],
 									"text" : "print from-udp-connection"
 								}
 
@@ -4756,7 +4862,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 367.0, 169.5, 126.0, 22.0 ],
+									"patching_rect" : [ 334.5, 239.25, 126.0, 22.0 ],
 									"text" : "r from-udp-connection"
 								}
 
@@ -4767,7 +4873,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 62.5, 58.5, 221.0, 20.0 ],
+									"patching_rect" : [ 59.5, 46.5, 221.0, 20.0 ],
 									"text" : "default pd patch is \"client.pd\""
 								}
 
@@ -4780,7 +4886,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 373.5, 70.5, 24.0, 24.0 ]
+									"patching_rect" : [ 334.5, 160.5, 24.0, 24.0 ]
 								}
 
 							}
@@ -4792,7 +4898,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 373.5, 106.5, 161.0, 35.0 ],
+									"patching_rect" : [ 334.5, 196.5, 161.0, 35.0 ],
 									"text" : ";\rto-udp-connection /tester $1"
 								}
 
@@ -4806,7 +4912,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 23.0, 30.0, 294.0, 24.0 ],
+									"patching_rect" : [ 23.0, 11.0, 294.0, 24.0 ],
 									"text" : "Open PD file from shell (macos only)"
 								}
 
@@ -4945,6 +5051,13 @@
 							}
  ],
 						"lines" : [ 							{
+								"patchline" : 								{
+									"destination" : [ "obj-4", 0 ],
+									"source" : [ "obj-11", 0 ]
+								}
+
+							}
+, 							{
 								"patchline" : 								{
 									"destination" : [ "obj-193", 0 ],
 									"source" : [ "obj-110", 0 ]
