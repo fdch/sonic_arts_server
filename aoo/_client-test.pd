@@ -1,0 +1,14 @@
+#N canvas 521 27 450 300 12;
+#X declare -lib aoo;
+#X obj 251 26 declare -lib aoo;
+#X obj 28 213 aoo_client 8888;
+#X obj 28 239 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 68 153 connect 172.17.127.113 40403 user1 user1-pass;
+#X msg 27 87 connect pd-server.herokuapp.com 30561 user1 user1-pass
+;
+#X msg 60 118 connect 10.171.230.57 30561 foo bar;
+#X connect 1 0 2 0;
+#X connect 3 0 1 0;
+#X connect 4 0 1 0;
+#X connect 5 0 1 0;
