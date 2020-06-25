@@ -1,10 +1,10 @@
 #!/bin/sh
-port=$1
+# port=9909
 cd ./aoo
 server=_server.pd
 
-echo "#N canvas 0 22 450 300 12;" > $server
-echo "#X obj 10 35 aoo_server $port;" >> $server
+# echo "#N canvas 0 22 450 300 12;" > $server
+# echo "#X obj 10 35 aoo_server $port" >> $server
 
 ../bin/pd -lib aoo -batch -open $server
 
