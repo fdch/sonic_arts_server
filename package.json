@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "a heroku server for remote max msp performances",
   "main": "server.js",
-  // "scripts": {
-    // "start": "node server.js",
-    // "heroku-postbuild": "npm install && npm run build"
-  // },
+  "scripts": {
+    "start": "node server.js",
+    "heroku-postbuild": "npm install && npm run build"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fdch/sonic_arts_server.git"
