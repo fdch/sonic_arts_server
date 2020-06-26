@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 function getKeys(obj) {
   var x = [];
   Object.keys(obj).forEach(function(key) {
-    x.append(key+":"+obj[key]);
+    x.push(key+":"+obj[key]);
   });
   return x;
 }
