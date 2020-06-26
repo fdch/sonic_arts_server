@@ -1,3 +1,3 @@
 #!/bin/sh
 cd ./aoo
-../bin/pd  -batch -nrt -lib aoo.pd_linux -verbose -open _server.pd
+../bin/pd  -batch -nrt -lib aoo -open _server.pd
