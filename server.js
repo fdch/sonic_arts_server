@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 app.get('/req', (req, res) => {
   var r=[];
   for (i in Object.keys(req)) {
-    r.append(i+": "+req[i]);
+    r.push(i+": "+req[i]);
   }
   res.send(r.join(";"));
 });
