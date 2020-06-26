@@ -23,7 +23,6 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
-
 function getKeys(obj) {
   var x = [];
   Object.keys(obj).forEach(function(key) {
@@ -32,28 +31,21 @@ function getKeys(obj) {
   return x;
 }
 
-
-
-
 // request the ip
 app.get('/req', (req, res) => {
-
-  var r=[];
-  if (req.baseUrl) r.push("baseUrl: "+req.baseUrl)
-  if (req.hostname) r.push("hostname: "+req.hostname);
-  if (req.ip) r.push("ip: "+req.ip);
-  if (req.ips) r.push("ips: "+req.ips);
-  if (req.originalUrl) r.push("originalUrl: "+req.originalUrl);
-  if (req.path) r.push("path: "+req.path);
-  if (req.protocol) r.push("protocol: "+req.protocol);
-  if (req.secure) r.push("secure: "+req.secure);
-  if (req.hxr) r.push("xhr: "+req.xhr);
-  if (req.route) r.push("route: "+(getKeys(req.route)).join());
-  if (req.subdomains) r.push("subdomains: "+req.subdomains.join());
-  if (req.query) r.push("query: "+(getKeys(req.query)).join());
-  if (req.params) r.push("params: "+(getKeys(req.params)).join());
-
-  res.send(r);
+  if (req.baseUrl) res.send("baseUrl: "+req.baseUrl);
+  if (req.hostname) res.send("hostname: "+req.hostname);
+  if (req.ip) res.send("ip: "+req.ip);
+  if (req.ips) res.send("ips: "+req.ips);
+  if (req.originalUrl) res.send("originalUrl: "+req.originalUrl);
+  if (req.path) res.send("path: "+req.path);
+  if (req.protocol) res.send("protocol: "+req.protocol);
+  if (req.secure) res.send("secure: "+req.secure);
+  if (req.hxr) res.send("xhr: "+req.xhr);
+  if (req.route) res.send("route: "+(getKeys(req.route)).join());
+  if (req.subdomains) res.send("subdomains: "+req.subdomains.join());
+  if (req.query) res.send("query: "+(getKeys(req.query)).join());
+  if (req.params) res.send("params: "+(getKeys(req.params)).join());
 });
 
 
