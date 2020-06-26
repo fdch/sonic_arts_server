@@ -37,20 +37,21 @@ function getKeys(obj) {
 
 // request the ip
 app.get('/req', (req, res) => {
+  
   var r=[];
-  r.append(req.baseUrl);
-  r.append(req.hostname);
-  r.append(req.ip);
-  r.append(req.ips);
-  r.append(req.originalUrl);
-  r.append(req.path);
-  r.append(req.protocol);
-  r.append(req.route);
-  r.append(req.secure);
-  r.append(req.xhr);
-  r.append(req.subdomains.join());
-  r.append((getKeys(req.query)).join());
-  r.append((getKeys(req.params)).join());
+  r.append(".baseUrl: "+req.baseUrl);
+  r.append(".hostname: "+req.hostname);
+  r.append(".ip: "+req.ip);
+  r.append(".ips: "+req.ips);
+  r.append(".originalUrl: "+req.originalUrl);
+  r.append(".path: "+req.path);
+  r.append(".protocol: "+req.protocol);
+  r.append(".route: "+req.route);
+  r.append(".secure: "+req.secure);
+  r.append(".xhr: "+req.xhr);
+  r.append(".subdomains: "+req.subdomains.join());
+  r.append(".query: "+(getKeys(req.query)).join());
+  r.append(".params: "+(getKeys(req.params)).join());
 
   res.send(r.join(";\n"));
 });
