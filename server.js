@@ -23,17 +23,49 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
+
+function getKeys(obj) {
+  var x = [];
+  Object.keys(obj).forEach(function(key) {
+    x.append(key+":"+obj[key]);
+  });
+  return x;
+}
+
+
+
+
 // request the ip
 app.get('/req', (req, res) => {
-  var r=[];
-  for (let i=0; i<req.length; i++) {
-    if (req[i]) { 
-      r[i] = req[i];
-    } else {
-      r[i] = undefined;
-    }
-  }
-  res.send(r.join("\n"));
+
+  //The URL path on which a router instance was mounted.
+  r[0]=req.baseUrl;
+   //Contains the hostname from the "Host" HTTP header.
+  r[1]=req.hostname;
+   //The remote IP address of the request.
+  r[2]=req.ip;
+   //When the trust proxy setting is true, this property contains an array of IP addresses specified in the “X-Forwarded-For” request header.
+  r[3]=req.ips;
+   //This property is much like req.url; however, it retains the original request URL, allowing you to rewrite req.url freely for internal routing purposes.
+  r[4]=req.originalUrl;
+   //Contains the path part of the request URL.
+  r[5]=req.path;
+   //The request protocol string, "http" or "https" when requested with TLS.
+  r[6]=req.protocol;
+   //The currently-matched route, a string.
+  r[7]=req.route;
+   //A Boolean that is true if a TLS connection is established.
+  r[8]=req.secure;
+   //A Boolean value that is true if the request’s "X-Requested-With" header field is “XMLHttpRequest”, indicating that the request was issued by a client library such as jQuery.
+  r[9]=req.xhr;
+   //An array of subdomains in the domain name of the request.
+  r[10]=req.subdomains.join();
+   //An object containing a property for each query string parameter in the route.
+  r[12]=(getKeys(req.query)).join();
+   //An object containing properties mapped to the named route “parameters”. For example, if you have the route /user/:name, then the "name" property is available as req.params.name. This object defaults to {}.
+  r[13]=(getKeys(req.params)).join();
+  
+  res.send(r.join(";\n"));
 });
 
 
