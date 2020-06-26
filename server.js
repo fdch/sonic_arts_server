@@ -39,21 +39,21 @@ function getKeys(obj) {
 app.get('/req', (req, res) => {
 
   var r=[];
-  r.push(".baseUrl: "+req.baseUrl||-1);
-  r.push(".hostname: "+req.hostname||-1);
-  r.push(".ip: "+req.ip||-1);
-  r.push(".ips: "+req.ips||-1);
-  r.push(".originalUrl: "+req.originalUrl||-1);
-  r.push(".path: "+req.path||-1);
-  r.push(".protocol: "+req.protocol||-1);
-  r.push(".secure: "+req.secure||-1);
-  r.push(".xhr: "+req.xhr||-1);
-  r.push(".route: "+(getKeys(req.route)).join()||-1);
-  r.push(".subdomains: "+req.subdomains.join()||-1);
-  r.push(".query: "+(getKeys(req.query)).join()||-1);
-  r.push(".params: "+(getKeys(req.params)).join()||-1);
+  if (req.baseUrl) r.push("baseUrl: "+req.baseUrl)
+  if (req.hostname) r.push("hostname: "+req.hostname);
+  if (req.ip) r.push("ip: "+req.ip);
+  if (req.ips) r.push("ips: "+req.ips);
+  if (req.originalUrl) r.push("originalUrl: "+req.originalUrl);
+  if (req.path) r.push("path: "+req.path);
+  if (req.protocol) r.push("protocol: "+req.protocol);
+  if (req.secure) r.push("secure: "+req.secure);
+  if (req.hxr) r.push("xhr: "+req.xhr);
+  if (req.route) r.push("route: "+(getKeys(req.route)).join());
+  if (req.subdomains) r.push("subdomains: "+req.subdomains.join());
+  if (req.query) r.push("query: "+(getKeys(req.query)).join());
+  if (req.params) r.push("params: "+(getKeys(req.params)).join());
 
-  res.send(r.join(";"));
+  res.send(r);
 });
 
 
