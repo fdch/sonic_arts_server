@@ -19,7 +19,11 @@ app.get('/', (req, res) => {
 });
 // request the ip
 app.get('/req', (req, res) => {
-  res.send(req);
+  var r=[];
+  for (i in Object.keys(req)) {
+    r.append(i+": "+req[i]);
+  }
+  res.send(r.join(";"));
 });
 
 /* 
