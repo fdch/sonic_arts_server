@@ -17,6 +17,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
+// request the ip
+app.get('/ip', (req, res) => {
+  res.send(req.ip);
+});
+
 /* 
  * 
  * Helper routines
