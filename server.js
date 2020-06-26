@@ -39,21 +39,21 @@ function getKeys(obj) {
 app.get('/req', (req, res) => {
 
   var r=[];
-  r.push(".baseUrl: "+req.baseUrl);
-  r.push(".hostname: "+req.hostname);
-  r.push(".ip: "+req.ip);
-  r.push(".ips: "+req.ips);
-  r.push(".originalUrl: "+req.originalUrl);
-  r.push(".path: "+req.path);
-  r.push(".protocol: "+req.protocol);
-  r.push(".route: "+req.route);
-  r.push(".secure: "+req.secure);
-  r.push(".xhr: "+req.xhr);
-  r.push(".subdomains: "+req.subdomains.join());
-  r.push(".query: "+(getKeys(req.query)).join());
-  r.push(".params: "+(getKeys(req.params)).join());
+  r.push(".baseUrl: "+req.baseUrl||-1);
+  r.push(".hostname: "+req.hostname||-1);
+  r.push(".ip: "+req.ip||-1);
+  r.push(".ips: "+req.ips||-1);
+  r.push(".originalUrl: "+req.originalUrl||-1);
+  r.push(".path: "+req.path||-1);
+  r.push(".protocol: "+req.protocol||-1);
+  r.push(".secure: "+req.secure||-1);
+  r.push(".xhr: "+req.xhr||-1);
+  r.push(".route: "+(getKeys(req.route)).join()||-1);
+  r.push(".subdomains: "+req.subdomains.join()||-1);
+  r.push(".query: "+(getKeys(req.query)).join()||-1);
+  r.push(".params: "+(getKeys(req.params)).join()||-1);
 
-  res.send(r.join(";\n"));
+  res.send(r.join(";"));
 });
 
 
