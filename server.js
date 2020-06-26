@@ -16,12 +16,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 // serve the homepage
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
-  url = `${req.headers['X-Forwarded-Proto'] || req.connection.info.protocol}://${req.info.host}${req.url.path}`;
-  console.log('begin request ---------------------');
-  for (i in Object.keys(req)) {
-    console.log(i + ": " + req[i]);
-  }
-  console.log('end request   ---------------------');
+  url = req.ip;
+  // url = `${req.headers['X-Forwarded-Proto'] || req.connection.info.protocol}://${req.info.host}${req.url.path}`;
+  // console.log('begin request ---------------------');
+  // for (i in Object.keys(req)) {
+    // console.log(i + ": " + req[i]);
+  // }
+  // console.log('end request   ---------------------');
 });
 /* 
  * 
