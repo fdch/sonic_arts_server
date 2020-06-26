@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
-const url = `${request.headers['x-forwarded-proto'] || request.connection.info.protocol}://${request.info.host}${request.url.path}`;
+const url = `${http.request.headers['x-forwarded-proto'] || http.request.connection.info.protocol}://${http.request.info.host}${http.request.url.path}`;
 /* 
  * 
  * Helper routines
