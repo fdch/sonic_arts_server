@@ -5,6 +5,7 @@ const http = require('http');
 const server = http.Server(app);
 const io = require('socket.io')(server);
 const PORT = process.env.PORT || 80;
+const IP = process.env.IP;
 var verbose = 0, store = 0;
 // store everythin here for now:
 var userData=[];
@@ -289,5 +290,5 @@ io.sockets.on('connection', function(socket) {
  *
  *
  */
-console.log("hostname is: " + url);
+ console.log("process ip is: "+IP);
 server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
