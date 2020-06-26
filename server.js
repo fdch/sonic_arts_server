@@ -6,7 +6,7 @@ const server = http.Server(app);
 const io = require('socket.io')(server);
 const PORT = process.env.PORT || 80;
 const IP = process.env.IP;
-var verbose = 0, store = 0;
+var verbose = 0, store = 0, url = '';
 // store everythin here for now:
 var userData=[];
 
@@ -16,8 +16,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 // serve the homepage
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
+  url = `${req.headers['X-Forwarded-Proto'] || req.connection.info.protocol}://${req.info.host}${req.url.path}`;
+  console.log('begin request ---------------------');
+  for (i in Object.keys(req)) {
+    console.log(i + ": " + req[i]);
+  }
+  console.log('end request   ---------------------');
 });
-const url = `${http.headers['X-Forwarded-Proto'] || http.connection.info.protocol}://${http.info.host}${http.url.path}`;
 /* 
  * 
  * Helper routines
