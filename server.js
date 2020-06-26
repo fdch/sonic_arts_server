@@ -1,8 +1,9 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
+const http = require('http');
+const server = http.Server(app);
+const io = require('socket.io')(server);
 const PORT = process.env.PORT || 80;
 var verbose = 0, store = 0;
 // store everythin here for now:
@@ -289,4 +290,4 @@ io.sockets.on('connection', function(socket) {
  *
  */
 console.log("hostname is: " + url);
-http.listen(PORT, () => console.log(`Listening on ${ PORT }`));
+server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
