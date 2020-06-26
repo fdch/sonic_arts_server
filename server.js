@@ -133,12 +133,6 @@ io.sockets.on('connection', function(socket) {
   broadcast(socket,'users',userData.length);
   /*
    *
-   *
-   *
-  */
-  socket.emit('socket', socket);
-  /*
-   *
    * get user reference and index for later use
    *
    */
