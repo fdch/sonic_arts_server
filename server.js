@@ -17,6 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
+const url = `${http.request.headers['X-Forwarded-Proto'] || http.request.connection.info.protocol}://${http.request.info.host}${http.request.url.path}`;
 /* 
  * 
  * Helper routines
@@ -290,4 +291,5 @@ io.sockets.on('connection', function(socket) {
  *
  */
  console.log("process ip is: "+IP);
+ console.log("process url is: "+url);
 server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
