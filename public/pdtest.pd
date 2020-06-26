@@ -1,9 +1,14 @@
-#N canvas 566 120 450 300 12;
+#N canvas 524 57 450 300 12;
 #X declare -lib aoo;
 #X obj 293 19 declare -lib aoo;
-#X obj 17 124 aoo_client 1234;
-#X floatatom 17 150 5 0 0 0 - - -;
-#X msg 17 71 connect http://sonic-arts-server.herokuapp.com 9909 foo
-bar;
-#X connect 1 0 2 0;
-#X connect 3 0 1 0;
+#X floatatom 17 220 5 0 0 0 - - -;
+#X obj 17 194 aoo_client 1111;
+#X msg 17 13 10.63.145.103;
+#X obj 17 97 symbol;
+#X msg 17 141 connect \$1 9909 foo bar;
+#X msg 37 62 https://sonic-arts-server.herokuapp.com;
+#X connect 2 0 1 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 2 0;
+#X connect 6 0 4 0;
