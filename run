@@ -1,5 +1,5 @@
 #!/bin/sh
 
-../bin/pd -lib ./aoo/aoo.pd_linux -batch -verbose -open ./aoo/_server.pd
+./bin/pd -lib ./aoo/aoo.pd_linux -batch -verbose -open ./aoo/_server.pd
 
 # ./bin/pd -nrt -nogui -stderr -send ';port $1' -noaudio -nomidi -open ./quacktrip-0.4/lib/conniption-server.pd
