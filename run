@@ -1,12 +1,5 @@
 #!/bin/sh
-# port=9909
-cd ./aoo
-server=_server.pd
 
-# echo "#N canvas 0 22 450 300 12;" > $server
-# echo "#X obj 10 35 aoo_server $port" >> $server
-
-../bin/pd -lib aoo -batch -verbose -open $server
-
+../bin/pd -lib ./aoo/aoo.pd_linux -batch -verbose -open ./aoo/_server.pd
 
 # ./bin/pd -nrt -nogui -stderr -send ';port $1' -noaudio -nomidi -open ./quacktrip-0.4/lib/conniption-server.pd

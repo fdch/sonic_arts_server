@@ -83,3 +83,7 @@ socket.on('dump', function(data) {
 socket.on('connected', function() {
   maxAPI.outlet('/connected');
 });
+socket.on('socket', function(data) {
+  maxAPI.post(data);
+  maxAPI.outlet('/socket', data);
+});

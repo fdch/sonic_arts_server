@@ -16,13 +16,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 // serve the homepage
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
-  url = req.ip;
-  // url = `${req.headers['X-Forwarded-Proto'] || req.connection.info.protocol}://${req.info.host}${req.url.path}`;
-  // console.log('begin request ---------------------');
-  // for (i in Object.keys(req)) {
-    // console.log(i + ": " + req[i]);
-  // }
-  // console.log('end request   ---------------------');
 });
 /* 
  * 
@@ -133,6 +126,12 @@ io.sockets.on('connection', function(socket) {
    */
   socket.emit('connected');
   broadcast(socket,'users',userData.length);
+  /*
+   *
+   *
+   *
+  */
+  socket.emit('socket', socket);
   /*
    *
    * get user reference and index for later use
@@ -296,6 +295,4 @@ io.sockets.on('connection', function(socket) {
  *
  *
  */
- console.log("process ip is: "+IP);
- console.log("process url is: "+url);
 server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
