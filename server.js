@@ -5,22 +5,37 @@ const http = require('http');
 const server = http.Server(app);
 const io = require('socket.io')(server);
 const PORT = process.env.PORT || 80;
-const IP = process.env.IP;
-var verbose = 0, store = 0, url = '';
 // store everythin here for now:
-var userData=[];
+var verbose = 0, store = 0, url = '', userData=[];
 
-// Routing
+
+/* 
+ * 
+ * HTTP routines
+ * 
+ */
+
+// Routing to the public dir
 app.use(express.static(path.join(__dirname, 'public')));
 
 // serve the homepage
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
+
 // request the ip
 app.get('/req', (req, res) => {
-  res.send(req.join("\n"));
+  var r=[];
+  for (let i=0; i<req.length; i++) {
+    if (req[i]) { 
+      r[i] = req[i];
+    } else {
+      r[i] = undefined;
+    }
+  }
+  res.send(r.join("\n"));
 });
+
 
 /* 
  * 
