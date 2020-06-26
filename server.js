@@ -20,10 +20,10 @@ app.get('/', (req, res) => {
 // request the ip
 app.get('/req', (req, res) => {
   var r=[];
-  for (i in Object.keys(req)) {
-    r.push(i+": "+req[i]);
-  }
-  res.send(r.join(";"));
+  Object.keys(req).forEach(function(key) {
+    r.push(key+": "+req[key]);
+});
+  res.send(r.join("\n"));
 });
 
 /* 
