@@ -258,6 +258,8 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -288,6 +290,8 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -2307,7 +2311,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 25.5, 308.5, 201.0, 33.0 ],
-									"presentation_linecount" : 3,
 									"text" : "Here, node-2 ('user2') sends a message and node ('user1') gets it. "
 								}
 
@@ -2433,7 +2436,6 @@
 									"outlettype" : [ "", "int", "", "" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 247.5, 298.0, 238.0, 60.0 ],
-									"presentation_linecount" : 2,
 									"style" : "default",
 									"tabmode" : 0,
 									"text" : "And who are you\\, again?"
@@ -3350,7 +3352,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 88.5, 487.0, 91.0, 35.0 ],
-									"presentation_linecount" : 3,
 									"text" : ";\rnode-set /users"
 								}
 
@@ -4099,7 +4100,6 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 46.5, 311.5, 295.0, 35.0 ],
-													"presentation_linecount" : 2,
 													"text" : ";\rmax launchbrowser http://msp.ucsd.edu/software.html"
 												}
 
@@ -4112,7 +4112,6 @@
 													"numinlets" : 1,
 													"numoutlets" : 0,
 													"patching_rect" : [ 46.5, 251.0, 309.0, 47.0 ],
-													"presentation_linecount" : 3,
 													"text" : "NOTE: A \"Pd-0.51-0.app\" must be in your /Applications folder. Edit the puredata subpatcher if you have a newer pd. Otherwise, get pd version 0.51 here:"
 												}
 
