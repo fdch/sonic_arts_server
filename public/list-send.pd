@@ -1,5 +1,5 @@
 #N canvas 0 22 450 300 12;
-#X obj 36 65 t a a;
+#X obj 89 82 t a a;
 #X obj 151 124 list split 1;
 #X obj 36 124 list split 1;
 #X obj 133 217 s;
@@ -8,6 +8,8 @@
 #X obj 36 29 inlet;
 #X obj 36 224 bang;
 #X obj 36 250 outlet;
+#X text 91 55 input a tuple: receiver_name message_data;
+#X text 167 216 sends: message_data --> receiver_name;
 #X connect 0 0 2 0;
 #X connect 0 1 1 0;
 #X connect 1 0 4 0;
