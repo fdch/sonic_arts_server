@@ -6,7 +6,7 @@ const server = http.Server(app);
 const io = require('socket.io')(server);
 const PORT = process.env.PORT || 80;
 // store everythin here for now:
-var verbose = 0, store = 0, url = '', userData=[];
+var verbose = 0, store = 0, mode = 0, url = '', userData=[];
 
 
 /* 
@@ -106,8 +106,20 @@ function getUserList(arr) {
   return userlist.join(" ");
 }
 function broadcast(socket,head,...data) {
-  socket.broadcast.emit(head,data); 
-  if (verbose) console.log(head+": "+data);
+	if (mode == 0) {
+
+		socket.sockets.emit(head,data); 
+
+	} else {
+	
+		socket.broadcast.emit(head,data); 
+  	
+  	}
+  	if (verbose)  {
+  	
+  		console.log(head+": "+data);
+  	
+  	}
 }
 function updateDict(socket,userData,prop,header,values,f) {
     const newStuff = {
@@ -312,6 +324,9 @@ io.sockets.on('connection', function(socket) {
   });
   socket.on('store', function(x) {
     store = x;
+  });
+  socket.on('mode', function(x) {
+    mode = x;
   });
 });
 /*
