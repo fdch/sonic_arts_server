@@ -57,6 +57,9 @@ maxAPI.addHandler('/verbose', (x) => {
 maxAPI.addHandler('/store', (x) => {
   socket.emit('store', x);
 });
+maxAPI.addHandler('/mode', (x) => {
+  socket.emit('mode', x);
+});
 /*
  *
  * To Max

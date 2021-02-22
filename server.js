@@ -108,18 +108,16 @@ function getUserList(arr) {
 function broadcast(socket,head,...data) {
 	if (mode == 0) {
 
-		socket.sockets.emit(head,data); 
+		socket.emit(head,data); 
 
 	} else {
 	
 		socket.broadcast.emit(head,data); 
   	
-  	}
-  	if (verbose)  {
-  	
-  		console.log(head+": "+data);
-  	
-  	}
+  }
+  if (verbose)  {
+  	console.log(head+": "+data);
+  }
 }
 function updateDict(socket,userData,prop,header,values,f) {
     const newStuff = {
