@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 126.0, 109.0, 718.0, 422.0 ],
+		"rect" : [ 814.0, 73.0, 718.0, 422.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -104,7 +104,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 34.5, 59.0, 234.5, 87.0 ],
-									"presentation_linecount" : 6,
 									"text" : "in '/mode 0'  (default) messages are any-to-any (everyone receives everyone's messages, including your own)\n\nin '/mode 1', messages are sent any-to-any except to sender"
 								}
 
@@ -428,6 +427,8 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -458,6 +459,8 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -1518,7 +1521,7 @@
 										}
 ,
 										"classnamespace" : "box",
-										"rect" : [ 84.0, 106.0, 796.0, 599.0 ],
+										"rect" : [ 213.0, 64.0, 796.0, 599.0 ],
 										"bglocked" : 0,
 										"openinpresentation" : 0,
 										"default_fontsize" : 12.0,
@@ -2399,7 +2402,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 59.0, 81.0, 640.0, 480.0 ],
+						"rect" : [ 82.0, 168.0, 640.0, 480.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -3020,7 +3023,6 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-8",

@@ -5,6 +5,8 @@ const http = require('http');
 const server = http.Server(app);
 const io = require('socket.io')(server);
 const PORT = process.env.PORT || 80;
+//prevent any clients from ever using polling
+io.set('transports', ['websocket']);
 // store everythin here for now:
 var verbose = 0, store = 0, mode = 0, url = '', userData=[];
 

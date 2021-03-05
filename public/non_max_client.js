@@ -5,7 +5,6 @@
  *
  */
 const server = "https://sonic-arts-server.herokuapp.com";
-
 const io     = require('socket.io-client');
 const socket = io.connect(server);
 /*
@@ -62,6 +61,10 @@ const socket = io.connect(server);
  // * To Max
  // *
  // */
+function post(data) {
+	console.log(data);
+}
+
 socket.on('users', function(data) {
   post(data);
 });
@@ -82,4 +85,6 @@ socket.on('dump', function(data) {
 });
 socket.on('connected', function() {
   post(data);
+  socket.emit('users');
 });
+socket.emit('chat','thatt');
